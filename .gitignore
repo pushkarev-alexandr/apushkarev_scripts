@@ -1,2 +1,4 @@
 *.ini
+*.py
+*.txt
 temp.py
