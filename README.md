@@ -8,5 +8,5 @@ The scripts in this repository cover a range of functionalities, including node 
 
 ## Installation
 1. Clone the repository:
-`git clone https://github.com/pushkarev-alexandr/apushkarev_scripts`
+`git clone https://github.com/pushkarev-alexandr/apushkarev_scripts.git`
 2. **TODO**
