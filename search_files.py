@@ -6,51 +6,66 @@ folder structure.
 """
 import os, configparser, shutil
 
-def find_string_in_py_files(root_folder, search_string, renaming_map=None):
+def find_and_copy_files(root_folder, search_string, renaming_map=None):
     """
-    Recursively searches for a string in .py files, prints the file names,
-    and copies them to the current directory, preserving the folder structure relative to root_folder.
+    Recursively finds and copies files based on specified criteria.
+    - Copies .py files containing a specific search string.
+    - Copies all README.md files.
+    The folder structure relative to the root_folder is preserved in the destination.
 
     :param root_folder: The root folder to start the search from.
-    :param search_string: The string to search for.
+    :param search_string: The string to search for in .py files.
     :param renaming_map: A dictionary for renaming folders in the destination path.
                          Example: {'old_name': 'new_name'}
     """
     found_count = 0
     for dirpath, _, filenames in os.walk(root_folder):
         for filename in filenames:
+            file_path = os.path.join(dirpath, filename)
+            should_copy = False
+
+            # Condition 1: .py file with the search string
             if filename.endswith(".py"):
-                file_path = os.path.join(dirpath, filename)
                 try:
                     with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                         if search_string in f.read():
                             print(f"Found match in: {file_path}")
-
-                            # Calculate relative path to preserve directory structure
-                            relative_path = os.path.relpath(file_path, root_folder)
-
-                            # Apply folder renaming from the map if provided
-                            path_parts = relative_path.split(os.sep)
-                            renaming_map = renaming_map or {}
-                            modified_path_parts = [renaming_map.get(part.lower(), part) for part in path_parts]
-                            modified_relative_path = os.path.join(*modified_path_parts)
-
-                            destination_path = os.path.join(os.getcwd(), modified_relative_path)
-
-                            # Create destination directory if it doesn't exist
-                            destination_dir = os.path.dirname(destination_path)
-                            if destination_dir:
-                                os.makedirs(destination_dir, exist_ok=True)
-
-                            # Copy the file, preserving metadata
-                            shutil.copy2(file_path, destination_path)
-                            print(f"Copied to: {destination_path}")
-                            found_count += 1
+                            should_copy = True
                 except Exception as e:
-                    print(f"Failed to process file {file_path}: {e}")
+                    print(f"Failed to read file {file_path}: {e}")
+
+            # Condition 2: README.md file
+            elif filename.lower() == "readme.md":
+                print(f"Found README file: {file_path}")
+                should_copy = True
+
+            if should_copy:
+                try:
+                    # Calculate relative path to preserve directory structure
+                    relative_path = os.path.relpath(file_path, root_folder)
+
+                    # Apply folder renaming from the map if provided
+                    path_parts = relative_path.split(os.sep)
+                    renaming_map = renaming_map or {}
+                    modified_path_parts = [renaming_map.get(part.lower(), part) for part in path_parts]
+                    modified_relative_path = os.path.join(*modified_path_parts)
+
+                    destination_path = os.path.join(os.getcwd(), modified_relative_path)
+
+                    # Create destination directory if it doesn't exist
+                    destination_dir = os.path.dirname(destination_path)
+                    if destination_dir:
+                        os.makedirs(destination_dir, exist_ok=True)
+
+                    # Copy the file, preserving metadata
+                    shutil.copy2(file_path, destination_path)
+                    print(f"Copied to: {destination_path}")
+                    found_count += 1
+                except Exception as e:
+                    print(f"Failed to copy file {file_path}: {e}")
 
     if found_count == 0:
-        print("Files with the specified string were not found.")
+        print("\nNo matching files were found to copy.")
     else:
         print(f"\nSearch and copy complete. Files found and copied: {found_count}.")
 
@@ -76,6 +91,6 @@ if __name__ == "__main__":
     string_to_find = "Pushkarev"
 
     if os.path.isdir(scripts_folder):
-        find_string_in_py_files(scripts_folder, string_to_find, renaming_map)
+        find_and_copy_files(scripts_folder, string_to_find, renaming_map)
     else:
         print(f"Error: Directory not found at path '{scripts_folder}'")

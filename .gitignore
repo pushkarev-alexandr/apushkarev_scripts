@@ -1,4 +1,9 @@
+APushkarev/
+Cache/
+CallbackScripts/
+Custom/
+File/
+NukePanels/
 *.ini
-*.py
 *.txt
 temp.py
