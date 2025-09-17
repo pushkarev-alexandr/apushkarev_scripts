@@ -1,0 +1,1 @@
+Here are the scripts that are added to Nuke panels via `nukescripts.registerWidgetAsPanel`
