@@ -1,4 +1,12 @@
-APushkarev/
+APushkarev/Formats/
+APushkarev/Knobs/
+APushkarev/ML/
+APushkarev/Node/
+APushkarev/Node Graph/
+APushkarev/Projects/
+APushkarev/Render/
+APushkarev/Transform/
+APushkarev/Utilities/
 *.ini
 *.txt
 temp.py
