@@ -5,6 +5,24 @@ to the current directory. It searches for files containing a specific string
 folder structure.
 """
 import os, configparser, shutil
+from pathlib import Path
+
+def get_ignores(scripts_folder):
+    """Reads a .gitignore file from the scripts_folder and returns a dictionary
+    categorizing ignored files and directories.
+    """
+    res = {"dirs": [], "files": []}
+    ignore_file = os.path.join(scripts_folder, ".gitignore")
+    if os.path.exists(ignore_file):
+        with open(ignore_file, "r") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#"):
+                    if line.endswith("/"):
+                        res["dirs"].append(line[:-1])
+                    else:
+                        res["files"].append(line)
+    return res
 
 def find_and_copy_files(root_folder, search_string, renaming_map=None):
     """
@@ -19,20 +37,24 @@ def find_and_copy_files(root_folder, search_string, renaming_map=None):
                          Example: {'old_name': 'new_name'}
     """
     found_count = 0
+    ignores = get_ignores(root_folder)
     for dirpath, _, filenames in os.walk(root_folder):
         for filename in filenames:
             file_path = os.path.join(dirpath, filename)
+            relative_path = os.path.relpath(file_path, root_folder)  # Calculate relative path to preserve directory structure
             should_copy = False
 
             # Condition 1: .py file with the search string
             if filename.endswith(".py"):
-                try:
-                    with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
-                        if search_string in f.read():
-                            print(f"Found match in: {file_path}")
-                            should_copy = True
-                except Exception as e:
-                    print(f"Failed to read file {file_path}: {e}")
+                basedir = Path(relative_path).parts[0]
+                if basedir in ignores["dirs"] or filename in ignores["files"]:
+                    try:
+                        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+                            if search_string in f.read():
+                                print(f"Found match in: {file_path}")
+                                should_copy = True
+                    except Exception as e:
+                        print(f"Failed to read file {file_path}: {e}")
 
             # Condition 2: README.md file
             elif filename.lower() == "readme.md":
@@ -41,9 +63,6 @@ def find_and_copy_files(root_folder, search_string, renaming_map=None):
 
             if should_copy:
                 try:
-                    # Calculate relative path to preserve directory structure
-                    relative_path = os.path.relpath(file_path, root_folder)
-
                     # Apply folder renaming from the map if provided
                     path_parts = relative_path.split(os.sep)
                     renaming_map = renaming_map or {}
