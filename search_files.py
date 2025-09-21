@@ -47,7 +47,8 @@ def find_and_copy_files(root_folder, search_string, renaming_map=None):
             # Condition 1: .py file with the search string
             if filename.endswith(".py"):
                 basedir = Path(relative_path).parts[0]
-                if basedir in ignores["dirs"] or filename in ignores["files"]:
+                enddir = Path(relative_path).parts[-2]
+                if basedir in ignores["dirs"] or enddir in ignores["dirs"] or filename in ignores["files"]:
                     try:
                         with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                             if search_string in f.read():
