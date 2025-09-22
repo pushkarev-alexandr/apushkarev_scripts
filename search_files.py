@@ -67,7 +67,7 @@ def find_and_copy_files(root_folder, search_string, renaming_map=None):
                     # Apply folder renaming from the map if provided
                     path_parts = relative_path.split(os.sep)
                     renaming_map = renaming_map or {}
-                    modified_path_parts = [renaming_map.get(part.lower(), part) for part in path_parts]
+                    modified_path_parts = [renaming_map.get(part, part) for part in path_parts]
                     modified_relative_path = os.path.join(*modified_path_parts)
 
                     destination_path = os.path.join(os.getcwd(), modified_relative_path)
@@ -103,6 +103,7 @@ def get_renaming_map():
 
 if __name__ == "__main__":
     config = configparser.ConfigParser()
+    config.optionxform = str  # Disables converting keys to lowercase
     config.read("config.ini")
 
     scripts_folder = get_scripts_folder()
