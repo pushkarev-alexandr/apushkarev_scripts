@@ -1,4 +1,9 @@
 import nuke, nukescripts
+import os
+
+for root, dirs, _ in os.walk(os.path.dirname(__file__)):
+    dirs[:] = [d for d in dirs if d not in ("__pycache__", ".git")]
+    nuke.pluginAddPath(root.replace("\\", "/"))
 
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Add N P Layers', 'import addNPLayers; addNPLayers.addNPLayers()')
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Check Channels', 'import checkChannels; checkChannels.checkChannels()')
