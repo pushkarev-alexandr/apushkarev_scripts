@@ -102,6 +102,10 @@ def get_renaming_map():
     return {}
 
 if __name__ == "__main__":
+    if not os.path.exists("config.ini"):
+        print("Error: config.ini file not found.")
+        exit(1)
+    
     config = configparser.ConfigParser()
     config.optionxform = str  # Disables converting keys to lowercase
     config.read("config.ini")
