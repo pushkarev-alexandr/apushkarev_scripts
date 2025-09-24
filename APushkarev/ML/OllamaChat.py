@@ -1,15 +1,18 @@
 # Chat with artificial intelligence
 
-# v1.0.0
+# v1.1.0
 # created by: Pushkarev Aleksandr
 
 import nuke
-import requests
+import os, json
+from urllib.request import Request, urlopen
 
-url = "http://192.168.100.102:11434/api/generate"
+host = os.getenv("OLLAMA_HOST", "localhost")
+url = f"http://{host}:11434/api/generate"
+
 data = {
-    "model": "mazhor",
-    "prompt": "Hello, how are you?",
+    "model": "llama3.2",
+    "prompt": "",
     "stream": False
 }
 
@@ -18,6 +21,14 @@ def main():
     if not msg:
         return
     data["prompt"] = msg
-    response = requests.post(url, json=data)
-    response_msg = response.json().get("response", "")
+    try:
+        payload = json.dumps(data).encode("utf-8")
+        req = Request(url, data=payload, headers={"Content-Type": "application/json"}, method="POST")
+        with urlopen(req, timeout=30) as resp:
+            resp_body = resp.read().decode("utf-8")
+            resp_json = json.loads(resp_body)
+            response_msg = resp_json.get("response", "")
+    except Exception as e:
+        response_msg = f"Unexpected error: {e}"
+
     nuke.message(response_msg)
