@@ -6,6 +6,7 @@
 
 # TODO
 # Needs review
+# bake relative paths
 
 import nuke, os, json, re
 

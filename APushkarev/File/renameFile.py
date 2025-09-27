@@ -1,7 +1,12 @@
 # Renames the file and updates the filename in the selected Read node
+# Note: Sequences are not supported, only single files are supported.
 
-# v1.0.0
+# v1.0.1
 # created by: Pushkarev Aleksandr
+
+# changelog:
+# v1.0.0 - Initial release
+# v1.0.1 - Bug fix
 
 # TODO
 # - Should rename not only Read nodes, but any nodes with a 'file' knob
@@ -21,7 +26,7 @@ def main():
     kn = node["file"]
     path = kn.value()
     if not os.path.exists(path):
-        nuke.message(f"ФThe file {file_path} does not exist!")
+        nuke.message(f"The file {path} does not exist!")
         return
     old_name = os.path.basename(path)
     new_name = nuke.getInput("New filename", old_name)
