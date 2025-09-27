@@ -51,7 +51,8 @@ def find_and_copy_files(root_folder, search_string, renaming_map=None):
                 if basedir in ignores["dirs"] or enddir in ignores["dirs"] or filename in ignores["files"]:
                     try:
                         with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
-                            if search_string in f.read():
+                            file_content = f.read()
+                            if search_string in file_content:
                                 print(f"Found match in: {file_path}")
                                 should_copy = True
                     except Exception as e:
@@ -77,8 +78,22 @@ def find_and_copy_files(root_folder, search_string, renaming_map=None):
                     if destination_dir:
                         os.makedirs(destination_dir, exist_ok=True)
 
-                    # Copy the file, preserving metadata
-                    shutil.copy2(file_path, destination_path)
+                    # If .py file, apply renaming_map to file content
+                    if filename.endswith(".py"):
+                        try:
+                            with open(file_path, "r", encoding="utf-8", errors="ignore") as src_f:
+                                content = src_f.read()
+                            for old, new in renaming_map.items():
+                                content = content.replace(old, new)
+                            with open(destination_path, "w", encoding="utf-8") as dst_f:
+                                dst_f.write(content)
+                            shutil.copystat(file_path, destination_path)
+                        except Exception as e:
+                            print(f"Failed to copy and rename file content {file_path}: {e}")
+                            continue
+                    else:
+                        # For non-.py files, just copy as is
+                        shutil.copy2(file_path, destination_path)
                     print(f"Copied to: {destination_path}")
                     found_count += 1
                 except Exception as e:
