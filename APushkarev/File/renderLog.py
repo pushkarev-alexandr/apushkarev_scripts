@@ -1,19 +1,17 @@
 # Saves a pair of keys (file path) and (path to the script that rendered it) to a database
 # Limitation: if the file is moved, the link (file path) -> (script path) is lost
 
-# v1.1.0
+# v1.2.0
 # created by: Pushkarev Aleksandr
 
 # changelog:
 # v1.0.0 - Initial release
 # v1.1.0 - Refactor: streamline file path handling and improve code readability. Now works correctly for Read nodes with localization enabled
+# v1.2.0 - Migration: switched from JSON file storage to SQLite database for improved performance and reliability
 
-# TODO
-# - use sqlite database instead of json
+import nuke, os, sqlite3, re
 
-import nuke, os, json, re
-
-json_path = os.path.dirname(__file__).replace("\\", "/") + "/render_log.json"
+db_path = os.path.join(os.path.dirname(__file__), "render_log.sqlite")
 
 def unifyFrameVar(s):
     """Unify frame variable representation."""
@@ -24,32 +22,42 @@ def get_file_path_from_knob(kn):
     dirname = os.path.dirname(kn.getEvaluatedValue())
     return f"{dirname}/{filename}"
 
+def _init_db():
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS render_log (
+            file_path TEXT PRIMARY KEY,
+            script_path TEXT
+        )
+    """)
+    conn.commit()
+    conn.close()
+
 def renderLog():
     node = nuke.thisNode()
     nkPath = nuke.root().name()
     if node.Class() == "Write" and nkPath != "Root":
         path = get_file_path_from_knob(node["file"])
         if path and nkPath:
-            if not os.path.isfile(json_path):
-                with open(json_path, "w") as f:
-                    f.write("{}")
-            with open(json_path, "r") as f:
-                json_data = json.load(f)
-            json_data[path] = nkPath
-            with open(json_path, "w") as f:
-                json.dump(json_data, f, indent=1)
+            _init_db()
+            conn = sqlite3.connect(db_path)
+            c = conn.cursor()
+            c.execute("REPLACE INTO render_log (file_path, script_path) VALUES (?, ?)", (path, nkPath))
+            conn.commit()
+            conn.close()
 
 def getRelatedScriptPath():
-    if not os.path.isfile(json_path):
-        nuke.message(f"Can't find {json_path}")
+    if not os.path.isfile(db_path):
+        nuke.message(f"Can't find {db_path}")
         return
-    
+
     node = nuke.selectedNode()
     kn = node.knob("file")
     if not kn:
         nuke.message("Select Read or Write node")
         return
-    
+
     local_kn = node.knob("localizationPolicy")
     if local_kn:
         # Temporarily disable localization to get the correct file path (getEvaluatedValue returns original path only when localization is off)
@@ -59,7 +67,12 @@ def getRelatedScriptPath():
         local_kn.setValue(local_value)
     else:
         path = get_file_path_from_knob(kn)
-    with open(json_path, "r") as f:
-        json_data = json.load(f)
-    nkPath = json_data.get(path)
+
+    _init_db()
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+    c.execute("SELECT script_path FROM render_log WHERE file_path = ?", (path,))
+    row = c.fetchone()
+    conn.close()
+    nkPath = row[0] if row else None
     nuke.message(nkPath if nkPath else "No data for this file")
