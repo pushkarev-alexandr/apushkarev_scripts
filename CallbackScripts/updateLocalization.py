@@ -1,4 +1,6 @@
-# Automatically updates the Read node localization after rendering is complete (works only in GUI)
+# Automatically updates the Read node localization after rendering is complete (works only in GUI).
+# Does not enable localization itself—if localization is not enabled in the Read node, it will not be turned on by this script.
+# Safe for users who do not use localization.
 # Installation: add to menu.py
 # from updateLocalization import updateLocalizationMain
 # nuke.addAfterRender(updateLocalizationMain)

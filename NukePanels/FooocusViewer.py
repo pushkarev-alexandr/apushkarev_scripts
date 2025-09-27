@@ -32,6 +32,7 @@ else:
     from PySide6.QtCore import Qt, Signal
 import os
 
+# Change this variable to the path where your Fooocus program stores outputs.
 BASE_FOLDER_PATH = "Z:/Programs/ML/Fooocus/Fooocus/outputs"
 
 class ClickableLabel(QLabel):
