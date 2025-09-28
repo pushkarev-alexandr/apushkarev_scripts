@@ -1,13 +1,14 @@
 # Saves a pair of keys (file path) and (path to the script that rendered it) to a database
 # Limitation: if the file is moved, the link (file path) -> (script path) is lost
 
-# v1.2.0
+# v1.2.1
 # created by: Pushkarev Aleksandr
 
 # changelog:
 # v1.0.0 - Initial release
 # v1.1.0 - Refactor: streamline file path handling and improve code readability. Now works correctly for Read nodes with localization enabled
 # v1.2.0 - Migration: switched from JSON file storage to SQLite database for improved performance and reliability
+# v1.2.1 - You can pass a node as an argument to the renderLog function, so you can use this script anywhere. It is used before sending a render to the render farm.
 
 import nuke, os, sqlite3, re
 
@@ -34,8 +35,9 @@ def _init_db():
     conn.commit()
     conn.close()
 
-def renderLog():
-    node = nuke.thisNode()
+def renderLog(node = None):
+    if node is None:
+        node = nuke.thisNode()
     nkPath = nuke.root().name()
     if node.Class() == "Write" and nkPath != "Root":
         path = get_file_path_from_knob(node["file"])
