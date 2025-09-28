@@ -13,7 +13,7 @@ nuke.menu('Nuke').addCommand('APushkarev/File/Batch Rename', 'import batchRename
 nuke.menu('Nuke').addCommand('APushkarev/File/Rename File', 'import renameFile; renameFile.main()')
 import renderLog
 nuke.addAfterRender(renderLog.renderLog)
-nuke.menu("Nuke").addCommand("APushkarev/File/Nk Script Path from Read", "renderLog.getRelatedScriptPath()")
+nuke.menu("Nuke").addCommand("APushkarev/File/Nk Script Path from Read", "import renderLog;renderLog.getRelatedScriptPath()")
 nuke.menu('Nuke').addCommand('APushkarev/File/Set Z in Read', 'import setZinRead; setZinRead.setZinRead()')
 nuke.menu('Nuke').addCommand('APushkarev/Formats/Add Square Formats', 'import addSquareFormats; addSquareFormats.addSquareFormats()')
 nuke.menu('Nuke').addCommand('APushkarev/Knobs/Add Custom Knob', 'import knobCreater; knobCreater.knobCreater()')
