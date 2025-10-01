@@ -24,6 +24,15 @@ def get_ignores(scripts_folder):
                         res["files"].append(line)
     return res
 
+def get_config_ignore_files():
+    """Reads the [IgnoreFiles] section from config.ini and returns a set of filenames to ignore."""
+    ignore_files = set()
+    if config.has_section("IgnoreFiles") and "files" in config["IgnoreFiles"]:
+        files_str = config["IgnoreFiles"]["files"]
+        # Split by comma and strip whitespace
+        ignore_files = set(f.strip() for f in files_str.split(",") if f.strip())
+    return ignore_files
+
 def find_and_copy_files(root_folder, search_string, renaming_map=None):
     """
     Recursively finds and copies files based on specified criteria.
@@ -38,11 +47,16 @@ def find_and_copy_files(root_folder, search_string, renaming_map=None):
     """
     found_count = 0
     ignores = get_ignores(root_folder)
+    ignore_files_config = get_config_ignore_files()
     for dirpath, _, filenames in os.walk(root_folder):
         for filename in filenames:
             file_path = os.path.join(dirpath, filename)
             relative_path = os.path.relpath(file_path, root_folder)  # Calculate relative path to preserve directory structure
             should_copy = False
+
+            # Ignore files from config.ini [IgnoreFiles]
+            if filename in ignore_files_config:
+                continue
 
             # Condition 1: .py file with the search string
             if filename.endswith(".py"):
@@ -120,7 +134,7 @@ if __name__ == "__main__":
     if not os.path.exists("config.ini"):
         print("Error: config.ini file not found.")
         exit(1)
-    
+
     config = configparser.ConfigParser()
     config.optionxform = str  # Disables converting keys to lowercase
     config.read("config.ini")
