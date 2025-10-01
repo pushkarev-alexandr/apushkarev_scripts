@@ -59,8 +59,8 @@ with open(menu_file, "w", encoding="utf-8") as menu:
         "import nuke, nukescripts\n"
         "import os\n\n"
         "for root, dirs, _ in os.walk(os.path.dirname(__file__)):\n"
-        "    dirs[:] = [d for d in dirs if d not in (\"__pycache__\", \".git\")]\n"
-        "    nuke.pluginAddPath(root.replace(\"\\\\\", \"/\"))\n\n"
+        "    dirs[:] = [d for d in dirs if d not in ('__pycache__', '.git')]\n"
+        "    nuke.pluginAddPath(root.replace('\\\\', '/'))\n\n"
     )
     for root, dirnames, files in os.walk(cur_dir):
         if root == cur_dir:

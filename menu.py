@@ -2,8 +2,8 @@ import nuke, nukescripts
 import os
 
 for root, dirs, _ in os.walk(os.path.dirname(__file__)):
-    dirs[:] = [d for d in dirs if d not in ("__pycache__", ".git")]
-    nuke.pluginAddPath(root.replace("\\", "/"))
+    dirs[:] = [d for d in dirs if d not in ('__pycache__', '.git')]
+    nuke.pluginAddPath(root.replace('\\', '/'))
 
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Add N P Layers', 'import addNPLayers; addNPLayers.addNPLayers()')
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Check Channels', 'import checkChannels; checkChannels.checkChannels()')
@@ -13,7 +13,7 @@ nuke.menu('Nuke').addCommand('APushkarev/File/Batch Rename', 'import batchRename
 nuke.menu('Nuke').addCommand('APushkarev/File/Rename File', 'import renameFile; renameFile.main()')
 import renderLog
 nuke.addAfterRender(renderLog.renderLog)
-nuke.menu("Nuke").addCommand("APushkarev/File/Nk Script Path from Read", "import renderLog;renderLog.getRelatedScriptPath()")
+nuke.menu('Nuke').addCommand('APushkarev/File/Nk Script Path from Read', 'import renderLog;renderLog.getRelatedScriptPath()')
 nuke.menu('Nuke').addCommand('APushkarev/File/Set Z in Read', 'import setZinRead; setZinRead.setZinRead()')
 nuke.menu('Nuke').addCommand('APushkarev/Formats/Add Square Formats', 'import addSquareFormats; addSquareFormats.addSquareFormats()')
 nuke.menu('Nuke').addCommand('APushkarev/Knobs/Add Custom Knob', 'import knobCreater; knobCreater.knobCreater()')
@@ -58,4 +58,6 @@ nuke.addAfterRender(updateLocalizationMain)
 import CustomGuides
 nuke.menu('Nuke').addCommand('File/Open Copy...', 'import openCopy; openCopy.openCopy()', 'Ctrl+Alt+O', index=2)
 import FooocusViewer
-nukescripts.registerWidgetAsPanel("FooocusViewer.ImageGallery", "Fooocus Viewer", "uk.co.thefoundry.FooocusViewer")
+nukescripts.registerWidgetAsPanel('FooocusViewer.ImageGallery', 'Fooocus Viewer', 'uk.co.thefoundry.FooocusViewer')
+nuke.menu('Nuke').addCommand('Render/Afanasy/Set Free', 'import AfanasyButtons; AfanasyButtons.setFree()')
+nuke.menu('Nuke').addCommand('Render/Afanasy/Eject and NIMBY', 'import AfanasyButtons; AfanasyButtons.ejectAndNIMBY()')
