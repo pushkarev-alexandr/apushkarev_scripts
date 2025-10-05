@@ -11,7 +11,7 @@
 import nuke, os
 
 lama_cleaner_folder = os.path.normpath(os.getenv("LAMA_CLEANER_FOLDER"))
-use_model_dir = os.getenv("USE_MODEL_DIR", "False").lower() in ("1", "true", "yes")
+use_model_dir = os.getenv("LAMA_CLEANER_USE_MODEL_DIR", "False").lower() in ("1", "true", "yes")
 
 def openInLamaCleaner():
     if not lama_cleaner_folder or not os.path.isdir(lama_cleaner_folder):
