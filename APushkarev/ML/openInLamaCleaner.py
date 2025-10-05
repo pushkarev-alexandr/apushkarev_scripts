@@ -1,6 +1,6 @@
 # Opens the selected Read or Write node in the Lama-Cleaner application
 
-# v1.1.0
+# v1.1.1
 # created by: Pushkarev Aleksandr
 
 # TODO
@@ -10,15 +10,14 @@
 
 import nuke, os
 
-lama_cleaner_folder = os.path.normpath(os.getenv("LAMA_CLEANER_FOLDER"))
+lama_cleaner_folder = os.getenv("LAMA_CLEANER_FOLDER")
+lama_cleaner_folder = os.path.normpath(lama_cleaner_folder)
 use_model_dir = os.getenv("LAMA_CLEANER_USE_MODEL_DIR", "False").lower() in ("1", "true", "yes")
 
 def openInLamaCleaner():
     if not lama_cleaner_folder or not os.path.isdir(lama_cleaner_folder):
         nuke.message("LAMA_CLEANER_FOLDER is not set or invalid")
         return
-
-    lama_cleaner_folder = os.path.normpath(lama_cleaner_folder)
 
     for venv_name in ["venv", ".venv", "lama-cleaner"]:
         activate_file = os.path.join(lama_cleaner_folder, venv_name, "Scripts", "activate.bat")
