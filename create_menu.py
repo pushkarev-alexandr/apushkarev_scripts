@@ -2,21 +2,19 @@ import os
 import json
 import configparser
 
-# Path to the scripts folder (current folder)
 cur_dir = os.path.dirname(__file__)
-info_file = r"Z:\Nuke_Workgroup\python\ScriptsManager\scripts_info.json"
 menu_file = os.path.join(cur_dir, "menu.py")
-config_file = os.path.join(cur_dir, "config.ini")
-
-# Load script information
-with open(info_file, "r", encoding="utf-8") as f:
-    scripts_info = json.load(f)
 
 # Load renaming rules from config.ini
 config = configparser.ConfigParser()
 config.optionxform = str  # disables converting keys to lowercase
-config.read(config_file)
+config.read("config.ini")
 renaming_map = dict(config.items("Renaming")) if config.has_section("Renaming") else {}
+info_file = config["Paths"]["scripts_info_file"]
+
+# Load script information
+with open(info_file, "r", encoding="utf-8") as f:
+    scripts_info = json.load(f)
 
 def apply_renaming(menu_path, renaming_map):
     """Replaces parts of menu_path according to renaming_map"""
