@@ -11,6 +11,7 @@ nuke.menu('Nuke').addCommand('APushkarev/Create/Link Blur to Erode', 'import lin
 nuke.menu('Nuke').addCommand('APushkarev/File/Bake Relative Paths', 'import bakeRelativePaths; bakeRelativePaths.bakeRelativePaths()')
 nuke.menu('Nuke').addCommand('APushkarev/File/Batch Rename', 'import batchRename; batchRename.batchRename()')
 nuke.menu('Nuke').addCommand('APushkarev/File/Read from Write', 'import createReadFromWrite; createReadFromWrite.createReadFromWrite()', '+r', shortcutContext=2)
+nuke.menu('Nuke').addCommand('APushkarev/File/Open in Explorer', 'import openInExplorer; openInExplorer.openInExplorer()', 'Shift+B')
 nuke.menu('Nuke').addCommand('APushkarev/File/Rename File', 'import renameFile; renameFile.main()')
 import renderLog
 nuke.addAfterRender(renderLog.renderLog)
