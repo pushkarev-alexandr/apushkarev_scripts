@@ -2,13 +2,14 @@
 # When creating a node, Blur links the size to the Erode, FilterErode, or Dilate node if such a node was selected before creation.
 # If a Roto, RotoPaint, or Keyer node is selected, Blur will always set the channel to alpha.
 
-# v1.3.0
+# v1.4.0
 # created by: Pushkarev Aleksandr
 
 # changelog:
 # v1.0.0 - Initial version
 # v1.2.0 - Blur affects the same channels as Erode. Minor refactoring
 # v1.3.0 - Added same behavior for Erode and Dilate nodes as for FilterErode. For Roto, RotoPaint, Keyer, Blur always sets channel to alpha
+# v1.4.0 - Rename linkBlurToErode.py to createBlur.py
 
 import nuke
 
@@ -20,7 +21,7 @@ def create_blur_node(channels=None, size_expr=None):
         blur["channels"].setValue(channels)
     return blur
 
-def linkBlurToErode():
+def main():
     nodes = nuke.selectedNodes()
     if len(nodes) != 1:
         return
