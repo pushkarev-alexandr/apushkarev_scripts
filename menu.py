@@ -7,7 +7,7 @@ for root, dirs, _ in os.walk(os.path.dirname(__file__)):
 
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Add N P Layers', 'import addNPLayers; addNPLayers.addNPLayers()')
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Check Channels', 'import checkChannels; checkChannels.checkChannels()')
-nuke.menu('Nuke').addCommand('APushkarev/Create/Link Blur to Erode', 'import linkBlurToErode; linkBlurToErode.linkBlurToErode()', 'Ctrl+B', shortcutContext=2)
+nuke.menu('Nuke').addCommand('APushkarev/Create/Link Blur to Erode', 'import createBlur; createBlur.main()', 'Ctrl+B', shortcutContext=2)
 nuke.menu('Nuke').addCommand('APushkarev/File/Bake Relative Paths', 'import bakeRelativePaths; bakeRelativePaths.bakeRelativePaths()')
 nuke.menu('Nuke').addCommand('APushkarev/File/Batch Rename', 'import batchRename; batchRename.batchRename()')
 nuke.menu('Nuke').addCommand('APushkarev/File/Read from Write', 'import createReadFromWrite; createReadFromWrite.createReadFromWrite()', '+r', shortcutContext=2)

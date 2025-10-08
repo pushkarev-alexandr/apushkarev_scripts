@@ -18,7 +18,7 @@
 - **checkChannels.py**: Select two nodes; the script checks if the channels in these two nodes match. Useful for comparing if channels are missing or new ones have appeared in a new render
 
 #### Create
-- **linkBlurToErode.py**: When creating a Blur node, links its size to the Erode node if Erode was selected before creation
+- **createBlur.py**: When creating a Blur node, links its size to the Erode node if Erode was selected before creation
 
 #### File
 - **bakeRelativePaths.py**: For selected Read nodes (or all Reads if none are selected), replaces relative paths with full paths using getEvaluatedValue
