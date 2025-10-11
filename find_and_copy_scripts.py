@@ -48,7 +48,10 @@ def find_and_copy_files(root_folder, search_string, renaming_map=None):
     found_count = 0
     ignores = get_ignores(root_folder)
     ignore_files_config = get_config_ignore_files()
-    for dirpath, _, filenames in os.walk(root_folder):
+    for dirpath, dirnames, filenames in os.walk(root_folder):
+        if dirpath == root_folder:
+            continue  # Skip the root folder itself
+        dirnames[:] = [d for d in dirnames if d != "__pycache__"]
         for filename in filenames:
             file_path = os.path.join(dirpath, filename)
             relative_path = os.path.relpath(file_path, root_folder)  # Calculate relative path to preserve directory structure
@@ -60,9 +63,7 @@ def find_and_copy_files(root_folder, search_string, renaming_map=None):
 
             # Condition 1: .py file with the search string
             if filename.endswith(".py"):
-                basedir = Path(relative_path).parts[0]
-                enddir = Path(relative_path).parts[-2]
-                if basedir in ignores["dirs"] or enddir in ignores["dirs"] or filename in ignores["files"]:
+                if any(p in ignores["dirs"] for p in Path(relative_path).parts) or filename in ignores["files"]:
                     try:
                         with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                             file_content = f.read()
