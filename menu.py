@@ -12,6 +12,7 @@ nuke.menu('Nuke').addCommand('APushkarev/File/Bake Relative Paths', 'import bake
 nuke.menu('Nuke').addCommand('APushkarev/File/Batch Rename', 'import batchRename; batchRename.batchRename()')
 nuke.menu('Nuke').addCommand('APushkarev/File/Copy to New Version', 'import copyToNewVersion; copyToNewVersion.copyToNewVersion()')
 nuke.menu('Nuke').addCommand('APushkarev/File/Read from Write', 'import createReadFromWrite; createReadFromWrite.createReadFromWrite()', '+r', shortcutContext=2)
+nuke.menu('Nuke').addCommand('APushkarev/File/Extend Frames', 'import extendFrames; extendFrames.extendFrames()', 'Alt+Shift+D', shortcutContext=2)
 nuke.menu('Nuke').addCommand('APushkarev/File/Open in Explorer', 'import openInExplorer; openInExplorer.openInExplorer()', 'Shift+B')
 nuke.menu('Nuke').addCommand('APushkarev/File/Rename File', 'import renameFile; renameFile.main()')
 import renderLog

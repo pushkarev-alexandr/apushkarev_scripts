@@ -25,6 +25,7 @@
 - **batchRename.py**: Select a folder; in all files in this folder, the string 'from' will be renamed to 'to'. For example, you can rename version v002 to v003
 - **copyToNewVersion.py**: Copies all files of the selected Read node to a new version (tested only on sequences)
 - **createReadFromWrite.py**: Creates a Read node from a Write node
+- **extendFrames.py**: Extend frames for Read node
 - **openInExplorer.py**: This script opens the folder containing the file referenced by the selected node in Nuke. If no node is selected, it opens the folder of the current script.
 - **renameFile.py**: Renames a file and updates the name in the selected Read node
 - **renderLog.py**: After rendering, saves to the database the path to the rendered file and the path to the script that rendered this file.
