@@ -60,6 +60,9 @@
 - **unhideAllInputs.py**: Makes all inputs visible
 - **viewMask.py**: Puts the alpha channel from the second selected node into the red channel of the first selected node to evaluate where alpha is used. If pressed again, removes the ChannelMerge node
 
+#### Proj
+- **clearNkFolder.py**: Moves all Afanasy scripts, autosaves, and temporary files ending with a tilde to the autosave folder
+
 #### Render
 - **MakeProxy.py**: Renders proxy to the Temp folder for selected Reads and sets the path in Read proxy
 

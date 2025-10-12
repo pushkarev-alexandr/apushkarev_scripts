@@ -41,6 +41,7 @@ nuke.menu('Nuke').addCommand('APushkarev/Node Graph/Sort Reads By Filename', 'im
 nuke.menu('Nuke').addCommand('APushkarev/Node Graph/Switch Precomp Setup', 'import switchPrecompSetup; switchPrecompSetup.switchPrecompSetup()', 'Ctrl+Shift+W')
 nuke.menu('Nuke').addCommand('APushkarev/Node Graph/Unhide All Inputs', 'import unhideAllInputs; unhideAllInputs.unhideAllInputs()')
 nuke.menu('Nuke').addCommand('APushkarev/Node Graph/View Mask', 'import viewMask; viewMask.viewMask()', 'Alt+Shift+A')
+nuke.menu('Nuke').addCommand('APushkarev/Proj/Clear nk folder', 'import clearNkFolder; clearNkFolder.clearNkFolder()')
 nuke.menu('Nuke').addCommand('APushkarev/Render/Make Proxy', 'import MakeProxy; MakeProxy.main()')
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Card Reconcile', 'import CardReconcile; CardReconcile.main()')
 import corenerpinLabel
