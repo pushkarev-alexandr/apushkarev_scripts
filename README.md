@@ -67,6 +67,10 @@
 #### Render
 - **MakeProxy.py**: Renders proxy to the Temp folder for selected Reads and sets the path in Read proxy
 
+#### Roto
+- **FollowPath.py**: This script animates an object to move along a Roto or RotoPaint node's curve, automatically creating a Transform node with translation and rotation following the path
+- **moveRotoLifetime.py**: Shifts the lifetime of elements in the Roto/RotoPaint node by the specified number of frames
+
 #### Transform
 - **CardReconcile.py**: Creates a CornerPin from a Card node
 - **corenerpinLabel.py**: When pressing the copy_from or copy_to button, removes the matchmove or stabilize label (this label is set by the matchmove/stabilize button in the hotbox)
