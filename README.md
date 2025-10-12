@@ -78,7 +78,6 @@
 #### Utilities
 - **PerformanceTimers.py**: Adds buttons to enable and disable Performance Timers in Nuke
 - **ReloadModule.py**: Reloads the module with the specified name. Useful when you have made changes to a module
-- **WrapItUpFix.py**: Fixes Read node names so that WrapItUp works correctly
 - **listFrameServerWorkers.py**: Displays a list of available host machines running FrameServer and accessible from the current machine, i.e. where you can send renders using Nuke's standard tools
 
 ### Cache

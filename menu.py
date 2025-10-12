@@ -53,7 +53,6 @@ nuke.menu('Nuke').addCommand('APushkarev/Transform/Transform Tracker', 'import t
 nuke.menu('Nuke').addCommand('APushkarev/Utilities/List Frame Server Workers', 'import listFrameServerWorkers; listFrameServerWorkers.listFrameServerWorkers()')
 import PerformanceTimers
 nuke.menu('Nuke').addCommand('APushkarev/Utilities/Reload Module', 'import ReloadModule; ReloadModule.ReloadModule()')
-nuke.menu('Nuke').addCommand('APushkarev/Utilities/WrapItUp Fix', 'import WrapItUpFix; WrapItUpFix.WrapItUpFix()')
 nuke.menu('Nuke').addCommand('Cache/Localization/Open Localization Folder', 'import open_remove_localization;open_remove_localization.open_localization_folder()')
 nuke.menu('Nuke').addCommand('Cache/Localization/Remove Localization Folder', 'import open_remove_localization;open_remove_localization.remove_localization_folder()')
 from openNkAsNewComp import openNkAsNewComp
