@@ -25,6 +25,7 @@ nuke.menu('Nuke').addCommand('APushkarev/ML/Ollama Chat', 'import OllamaChat; Ol
 nuke.menu('Nuke').addCommand('APushkarev/ML/Open In Lama Cleaner', 'import openInLamaCleaner; openInLamaCleaner.openInLamaCleaner()')
 nuke.menu('Nuke').addCommand('APushkarev/Node/Add Label', 'import addLabel; addLabel.addLabel()', 'i', shortcutContext=2)
 nuke.menu('Nuke').addCommand('APushkarev/Node/Bake Dots Color', 'import bakeDotsColor; bakeDotsColor.bakeDotsColor()')
+nuke.menu('Nuke').addCommand('APushkarev/Node/Batch Knob Edit', 'import batchKnobEdit; batchKnobEdit.batchKnobEdit()')
 nuke.menu('Nuke').addCommand('APushkarev/Node/Restore Node Name', 'import restoreNodeName; restoreNodeName.restoreNodeName()')
 nuke.menu('Nuke').addCommand('APushkarev/Node/Show Class Name', 'import showClassName; showClassName.showClassName()', 'Ctrl+Alt+Shift+I')
 nuke.menu('Nuke').addCommand('APushkarev/Node Graph/Dotify', 'import dotify; dotify.main()')
