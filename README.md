@@ -66,6 +66,7 @@
 
 #### Render
 - **MakeProxy.py**: Renders proxy to the Temp folder for selected Reads and sets the path in Read proxy
+- **SplitRender.py**: Splits render by passes using shuffle
 
 #### Roto
 - **FollowPath.py**: This script animates an object to move along a Roto or RotoPaint node's curve, automatically creating a Transform node with translation and rotation following the path

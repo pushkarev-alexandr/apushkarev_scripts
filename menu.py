@@ -44,6 +44,7 @@ nuke.menu('Nuke').addCommand('APushkarev/Node Graph/Unhide All Inputs', 'import 
 nuke.menu('Nuke').addCommand('APushkarev/Node Graph/View Mask', 'import viewMask; viewMask.viewMask()', 'Alt+Shift+A')
 nuke.menu('Nuke').addCommand('APushkarev/Proj/Clear nk folder', 'import clearNkFolder; clearNkFolder.clearNkFolder()')
 nuke.menu('Nuke').addCommand('APushkarev/Render/Make Proxy', 'import MakeProxy; MakeProxy.main()')
+nuke.menu('Nuke').addCommand('APushkarev/Render/Split Render', 'import SplitRender; SplitRender.SplitRender()', 'Ctrl+Alt+S', shortcutContext=2)
 nuke.menu('Nuke').addCommand('APushkarev/Roto/Follow Path', 'import FollowPath; FollowPath.FollowPath()')
 nuke.menu('Nuke').addCommand('APushkarev/Roto/Move Lifetime', 'import moveRotoLifetime; moveRotoLifetime.moveRotoLifetime()')
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Card Reconcile', 'import CardReconcile; CardReconcile.main()')
