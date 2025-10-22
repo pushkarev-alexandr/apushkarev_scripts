@@ -105,4 +105,5 @@
 
 ### Render
 - **AfanasyButtons.py**: Adds Set Free and Eject and NIMBY buttons to Nuke
+- **screenshotFromViewer.py**: Renders the current frame of the active viewer and saves it to the current script's folder in the 'screenshots' subfolder or in the NUKE_TEMP_DIR folder
 
