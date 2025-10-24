@@ -1,12 +1,13 @@
 # Renders the current frame of the active viewer and saves it to the current script's folder in the 'screenshots' subfolder or in the NUKE_TEMP_DIR folder
 
-# v1.2.1
+# v1.2.2
 # created by: Pushkarev Aleksandr
 
 # changelog:
 # v1.1.1 channels are set to rgba
 # v1.2.0 Small refactoring. Removed the limit on the number of screenshots, implemented with while loop. Colorspace is now present in the naming.
 # v1.2.1 Now the screenshot name is derived from the script name
+# v1.2.2 Added frame number to screenshot file name
 
 import nuke, nukescripts
 import subprocess, os, re
@@ -44,7 +45,7 @@ def get_unique_screenshot_path(scrDir, rootname, colorspace):
         prefix = prefix.rstrip("._-")
 
     i = 1
-    path_template = f"{scrDir}/{prefix}_{{}}_{colorspace}.png"
+    path_template = f"{scrDir}/{prefix}_{{}}_{colorspace}.{nuke.frame()}.png"
     path = path_template.format(i)
     while os.path.isfile(path):
         i += 1
