@@ -37,6 +37,9 @@
 #### Formats
 - **addSquareFormats.py**: Allows you to add square formats, since by default only square_512 is available
 
+#### Hotkeys
+- **shortcuts.py**: Creates a menu of shortcuts for commonly used nodes
+
 #### Knobs
 - **knobCreater.py**: Nuke does not allow creating certain knobs like IArray_Knob and Eyedropper_Knob from the menu; this script provides a custom menu for such knobs
 

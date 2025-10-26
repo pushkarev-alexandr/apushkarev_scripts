@@ -22,6 +22,8 @@ nuke.addAfterRender(renderLog.renderLog)
 nuke.menu('Nuke').addCommand('APushkarev/File/Nk Script Path from Read', 'import renderLog;renderLog.getRelatedScriptPath()')
 nuke.menu('Nuke').addCommand('APushkarev/File/Set Z in Read', 'import setZinRead; setZinRead.setZinRead()')
 nuke.menu('Nuke').addCommand('APushkarev/Formats/Add Square Formats', 'import addSquareFormats; addSquareFormats.addSquareFormats()')
+import shortcuts
+shortcuts.createShortcutsMenu(nuke.menu('Nuke').menu('APushkarev'))
 nuke.menu('Nuke').addCommand('APushkarev/Knobs/Add Custom Knob', 'import knobCreater; knobCreater.knobCreater()')
 nuke.menu('Nuke').addCommand('APushkarev/ML/Ollama Chat', 'import OllamaChat; OllamaChat.main()')
 nuke.menu('Nuke').addCommand('APushkarev/ML/Open In Lama Cleaner', 'import openInLamaCleaner; openInLamaCleaner.openInLamaCleaner()')
