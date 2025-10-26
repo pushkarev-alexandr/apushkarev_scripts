@@ -17,6 +17,9 @@
 - **addNPLayers.py**: Adds N and P layers which are not present in Nuke by default but are very useful
 - **checkChannels.py**: Select two nodes; the script checks if the channels in these two nodes match. Useful for comparing if channels are missing or new ones have appeared in a new render
 
+#### Colorspace
+- **setColorspace.py**: Hotkeys for colorspaces
+
 #### Create
 - **createBlur.py**: When creating a Blur node, links its size to the Erode node if Erode was selected before creation
 

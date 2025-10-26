@@ -3,8 +3,8 @@
 
 # Adds the rule of thirds and symmetry. Instead of 1.85:1, adds 2.387:1 (2048x858).
 
-#v1.0.0
-#created by: Pushkarev Aleksandr
+# v1.0.0
+# created by: Pushkarev Aleksandr
 
 import foundry.ui
 import guides, custom_guides
