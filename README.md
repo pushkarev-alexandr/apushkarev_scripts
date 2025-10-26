@@ -87,6 +87,8 @@ If nothing is selected, creates a Merge node in difference mode.
 - **transformTracker.py**: Transforms Tracker points as specified in the selected Transform node
 
 #### Utilities
+- **FixColorPickerWindow.py**: When the Color Picker window goes off-screen, resets its position by removing the line in uistate.ini
+- **FixFrameRangeIsNotCallable.py**: Fix for "range is not callable" error
 - **PerformanceTimers.py**: Adds buttons to enable and disable Performance Timers in Nuke
 - **ReloadModule.py**: Reloads the module with the specified name. Useful when you have made changes to a module
 - **listFrameServerWorkers.py**: Displays a list of available host machines running FrameServer and accessible from the current machine, i.e. where you can send renders using Nuke's standard tools

@@ -57,6 +57,8 @@ nuke.menu('Nuke').addCommand('APushkarev/Transform/Distort Tracker', 'import dis
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Merge Trackers Nodes', 'import mergeTrackers; mergeTrackers.mergeTrackers()')
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Transform CornerPin', 'import transformCornerPin; transformCornerPin.transformCornerPin()')
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Transform Tracker', 'import transformTracker; transformTracker.transformTracker()')
+nuke.menu('Nuke').addCommand('APushkarev/Utilities/Fix Color Picker Window', 'import FixColorPickerWindow; FixColorPickerWindow.main()')
+nuke.menu('Nuke').addCommand('APushkarev/Utilities/Fix FrameRange is not callable', 'import FixFrameRangeIsNotCallable; FixFrameRangeIsNotCallable.main()')
 nuke.menu('Nuke').addCommand('APushkarev/Utilities/List Frame Server Workers', 'import listFrameServerWorkers; listFrameServerWorkers.listFrameServerWorkers()')
 import PerformanceTimers
 nuke.menu('Nuke').addCommand('APushkarev/Utilities/Reload Module', 'import ReloadModule; ReloadModule.ReloadModule()')
