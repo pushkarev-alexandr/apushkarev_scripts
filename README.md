@@ -57,8 +57,13 @@
 - **smartConnect.py**: Aligns nodes when connecting them
 - **smartMerge.py**: Replaces the standard Merge, connects the B input and places the Merge node below. If several nodes are selected, creates a stack of multiple Merges
 - **sortReadsByFilename.py**: Sorts and aligns selected Reads by filename
+- **stickyShotName.py**: Adds sticky notes to Read nodes with a recognizable shot name
 - **switchPrecompSetup.py**: Select a Write node, and a setup is created from it using a Switch node and a Read node
+- **toggleWorkingSpace.py**: Toggles between ACEScg and ACES2065 in Nuke's working space settings
 - **unhideAllInputs.py**: Makes all inputs visible
+- **viewDifference.py**: If a Switch node is selected, compares two images from the switch inputs using difference.
+If two nodes are selected, compares them. If a Merge node is selected, deletes it.
+If nothing is selected, creates a Merge node in difference mode.
 - **viewMask.py**: Puts the alpha channel from the second selected node into the red channel of the first selected node to evaluate where alpha is used. If pressed again, removes the ChannelMerge node
 
 #### Proj
