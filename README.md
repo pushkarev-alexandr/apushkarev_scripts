@@ -91,6 +91,10 @@ If nothing is selected, creates a Merge node in difference mode.
 - **ReloadModule.py**: Reloads the module with the specified name. Useful when you have made changes to a module
 - **listFrameServerWorkers.py**: Displays a list of available host machines running FrameServer and accessible from the current machine, i.e. where you can send renders using Nuke's standard tools
 
+#### Viewer
+- **toggleMaskingMode.py**: Toggles masking mode
+- **viewerJumper.py**: Can jump between adjacent Read nodes
+
 ### Cache
 #### Localization
 - **open_remove_localization.py**: Adds extra buttons to the Cache/Localization menu for opening the localization folder and removing this folder
