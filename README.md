@@ -13,6 +13,9 @@
 ## Script Descriptions
 
 ### APushkarev
+#### Bridge
+- **sendToAfterEffects.py**: Opens the selected sequence in After Effects, creates a composition, and saves the project
+
 #### Channels
 - **addNPLayers.py**: Adds N and P layers which are not present in Nuke by default but are very useful
 - **checkChannels.py**: Select two nodes; the script checks if the channels in these two nodes match. Useful for comparing if channels are missing or new ones have appeared in a new render
@@ -97,7 +100,9 @@ If nothing is selected, creates a Merge node in difference mode.
 - **FixFrameRangeIsNotCallable.py**: Fix for "range is not callable" error
 - **PerformanceTimers.py**: Adds buttons to enable and disable Performance Timers in Nuke
 - **ReloadModule.py**: Reloads the module with the specified name. Useful when you have made changes to a module
+- **ScriptsTab.py**: Allows you to execute scripts from the top menu using Tab, similar to how nodes are added via Tab
 - **listFrameServerWorkers.py**: Displays a list of available host machines running FrameServer and accessible from the current machine, i.e. where you can send renders using Nuke's standard tools
+- **switchKeyframePreviews.py**: Disables Keyframe Previews to prevent the Tracker node from hanging
 
 #### Viewer
 - **toggleMaskingMode.py**: Toggles masking mode
@@ -105,6 +110,7 @@ If nothing is selected, creates a Merge node in difference mode.
 
 ### Cache
 #### Localization
+- **localizeFolder.py**: Allows you to localize a folder and all its contents
 - **open_remove_localization.py**: Adds extra buttons to the Cache/Localization menu for opening the localization folder and removing this folder
 
 ### CallbackScripts

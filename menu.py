@@ -5,6 +5,7 @@ for root, dirs, _ in os.walk(os.path.dirname(__file__)):
     dirs[:] = [d for d in dirs if d not in ('__pycache__', '.git')]
     nuke.pluginAddPath(root.replace('\\', '/'))
 
+nuke.menu('Nuke').addCommand('APushkarev/Bridge/Send to After Effects', 'import sendToAfterEffects; sendToAfterEffects.sendToAfterEffects()', icon='after-effects.png')
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Add N P Layers', 'import addNPLayers; addNPLayers.addNPLayers()')
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Check Channels', 'import checkChannels; checkChannels.checkChannels()')
 import setColorspace
@@ -66,9 +67,12 @@ nuke.menu('Nuke').addCommand('APushkarev/Utilities/Fix FrameRange is not callabl
 nuke.menu('Nuke').addCommand('APushkarev/Utilities/List Frame Server Workers', 'import listFrameServerWorkers; listFrameServerWorkers.listFrameServerWorkers()')
 import PerformanceTimers
 nuke.menu('Nuke').addCommand('APushkarev/Utilities/Reload Module', 'import ReloadModule; ReloadModule.ReloadModule()')
+nuke.menu('Nuke').addCommand('APushkarev/Utilities/Scripts Tab', 'import ScriptsTab; ScriptsTab.runScriptsTab()', 'Ctrl+Tab')
+nuke.menu('Nuke').addCommand('APushkarev/Utilities/Switch Keyframe Previews', 'import switchKeyframePreviews; switchKeyframePreviews.switchKeyframePreviews()')
 nuke.menu('Nuke').addCommand('APushkarev/Viewer/Toggle Masking Mode', 'import toggleMaskingMode; toggleMaskingMode.toggleMaskingMode()', 'Ctrl+Alt+D')
 nuke.menu('Nuke').addCommand('APushkarev/Viewer/Jump Right', 'import viewerJumper; viewerJumper.viewerJumper(right=True)', 'Ctrl+Right', shortcutContext=2)
 nuke.menu('Nuke').addCommand('APushkarev/Viewer/Jump Left', 'import viewerJumper; viewerJumper.viewerJumper(right=False)', 'Ctrl+Left', shortcutContext=2)
+nuke.menu('Nuke').addCommand('Cache/Localization/Localize Folder', 'import localizeFolder; localizeFolder.main()')
 nuke.menu('Nuke').addCommand('Cache/Localization/Open Localization Folder', 'import open_remove_localization;open_remove_localization.open_localization_folder()')
 nuke.menu('Nuke').addCommand('Cache/Localization/Remove Localization Folder', 'import open_remove_localization;open_remove_localization.remove_localization_folder()')
 from openNkAsNewComp import openNkAsNewComp
