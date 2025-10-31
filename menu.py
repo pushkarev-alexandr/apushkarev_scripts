@@ -65,6 +65,7 @@ nuke.menu('Nuke').addCommand('APushkarev/Transform/Transform Tracker', 'import t
 nuke.menu('Nuke').addCommand('APushkarev/Utilities/Fix Color Picker Window', 'import FixColorPickerWindow; FixColorPickerWindow.main()')
 nuke.menu('Nuke').addCommand('APushkarev/Utilities/Fix FrameRange is not callable', 'import FixFrameRangeIsNotCallable; FixFrameRangeIsNotCallable.main()')
 nuke.menu('Nuke').addCommand('APushkarev/Utilities/List Frame Server Workers', 'import listFrameServerWorkers; listFrameServerWorkers.listFrameServerWorkers()')
+nuke.menu('Nuke').addCommand('APushkarev/Utilities/Menu Scripts Viewer', 'import MenuScriptsViewer; MenuScriptsViewer.main()')
 import PerformanceTimers
 nuke.menu('Nuke').addCommand('APushkarev/Utilities/Reload Module', 'import ReloadModule; ReloadModule.ReloadModule()')
 nuke.menu('Nuke').addCommand('APushkarev/Utilities/Scripts Tab', 'import ScriptsTab; ScriptsTab.runScriptsTab()', 'Ctrl+Tab')

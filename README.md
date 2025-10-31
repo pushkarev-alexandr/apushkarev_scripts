@@ -98,6 +98,7 @@ If nothing is selected, creates a Merge node in difference mode.
 #### Utilities
 - **FixColorPickerWindow.py**: When the Color Picker window goes off-screen, resets its position by removing the line in uistate.ini
 - **FixFrameRangeIsNotCallable.py**: Fix for "range is not callable" error
+- **MenuScriptsViewer.py**: Displays the script string associated with the selected Nuke menu item, if available.
 - **PerformanceTimers.py**: Adds buttons to enable and disable Performance Timers in Nuke
 - **ReloadModule.py**: Reloads the module with the specified name. Useful when you have made changes to a module
 - **ScriptsTab.py**: Allows you to execute scripts from the top menu using Tab, similar to how nodes are added via Tab
