@@ -3,35 +3,35 @@ import json
 import configparser
 from collections import defaultdict
 
-# Путь к файлу с описаниями
+# Path to the file with descriptions
 config = configparser.ConfigParser()
 config.read("config.ini")
 INFO_FILE = config["Paths"]["scripts_info_file"]
 README_FILE = os.path.join(os.path.dirname(__file__), "README.md")
 
-# Сканируем все .py файлы в подпапках
+# Scan all .py files in subfolders
 def find_scripts(root_dir):
     scripts_by_folder = defaultdict(list)
     for folder, _, files in os.walk(root_dir):
         rel_folder = os.path.relpath(folder, root_dir).replace('\\', '/')
         if rel_folder == '.':
-            continue  # пропускаем корневую папку
+            continue  # skip the root folder
         for f in files:
             if f.endswith('.py'):
                 scripts_by_folder[rel_folder].append(f)
     return scripts_by_folder
 
-# Читаем описания из info_file
+# Read descriptions from info_file
 with open(INFO_FILE, encoding='utf-8') as f:
     scripts_info = json.load(f)
 
 scripts_by_folder = find_scripts(os.path.dirname(__file__))
 
-# Формируем markdown секцию
+# Build markdown section
 lines = []
 lines.append('## Script Descriptions\n')
 
-# Группируем по верхней папке
+# Group by top-level folder
 grouped = defaultdict(lambda: defaultdict(list))
 for rel_folder, scripts in scripts_by_folder.items():
     parts = rel_folder.split('/')
@@ -57,12 +57,12 @@ for top in sorted(grouped):
 
 new_section = '\n'.join(lines)
 
-# Читаем README.md и добавляем секцию в конец
+# Read README.md and add section to the end
 with open(README_FILE, encoding='utf-8') as f:
     readme = f.read().rstrip()
 
 if '## Script Descriptions' in readme:
-    # Удаляем старый раздел
+    # Remove old section
     readme = readme.split('## Script Descriptions')[0].rstrip()
 
 with open(README_FILE, 'w', encoding='utf-8') as f:
