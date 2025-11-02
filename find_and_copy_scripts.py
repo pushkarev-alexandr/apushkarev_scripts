@@ -1,5 +1,5 @@
 """
-This script is designed to find and copy .py files from a working folder
+This script finds and copies .py files from a working folder
 to the current directory. It searches for files containing a specific string
 (e.g., the author's last name) and copies them, preserving the relative
 folder structure.
@@ -35,7 +35,7 @@ def get_config_ignore_files():
 
 def find_and_copy_files(root_folder, search_string, renaming_map=None):
     """
-    Recursively finds and copies files based on specified criteria.
+    Recursively finds and copies files based on specified criteria:
     - Copies .py files containing a specific search string.
     - Copies all README.md files.
     The folder structure relative to the root_folder is preserved in the destination.
@@ -68,14 +68,14 @@ def find_and_copy_files(root_folder, search_string, renaming_map=None):
                         with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                             file_content = f.read()
                             if search_string in file_content:
-                                print(f"Found match in: {file_path}")
+                                print(f"Match found in: {file_path}")
                                 should_copy = True
                     except Exception as e:
                         print(f"Failed to read file {file_path}: {e}")
 
             # Condition 2: README.md file
             elif filename.lower() == "readme.md":
-                print(f"Found README file: {file_path}")
+                print(f"README file found: {file_path}")
                 should_copy = True
 
             if should_copy:
@@ -86,7 +86,8 @@ def find_and_copy_files(root_folder, search_string, renaming_map=None):
                     modified_path_parts = [renaming_map.get(part, part) for part in path_parts]
                     modified_relative_path = os.path.join(*modified_path_parts)
 
-                    destination_path = os.path.join(os.getcwd(), modified_relative_path)
+                    script_dir = os.path.dirname(os.path.abspath(__file__))
+                    destination_path = os.path.join(script_dir, modified_relative_path)
 
                     # Create destination directory if it doesn't exist
                     destination_dir = os.path.dirname(destination_path)
@@ -147,5 +148,13 @@ if __name__ == "__main__":
 
     if os.path.isdir(scripts_folder):
         find_and_copy_files(scripts_folder, string_to_find, renaming_map)
+        # Copy autolabel.py from the parent directory of scripts_folder to the root of the current project
+        src_autolabel = os.path.join(os.path.dirname(scripts_folder), "autolabel.py")
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        dst_autolabel = os.path.join(script_dir, "autolabel.py")
+        try:
+            shutil.copy2(src_autolabel, dst_autolabel)
+        except Exception as e:
+            print(f"Failed to copy autolabel.py: {e}")
     else:
         print(f"Error: Directory not found at path '{scripts_folder}'")

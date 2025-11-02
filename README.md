@@ -3,12 +3,14 @@
 ## Installation Instructions
 
 1. Download and place the `apushkarev_scripts` folder into your user `.nuke` directory.
-2. In the `.nuke` directory, create a `menu.py` file if it does not exist.
-3. Add the following line at the end of `menu.py`:
+2. In the `.nuke` directory, create an `init.py` file if it does not exist.
+3. Add the following line at the end of `init.py`:
 	```python
 	nuke.pluginAddPath('./apushkarev_scripts')
 	```
 4. Start Nuke. The scripts and menus will be available.
+
+**Note:** If you add this line to `menu.py` instead of `init.py`, the `autolabel.py` script will not work.
 
 ## Script Descriptions
 
@@ -131,4 +133,6 @@ If nothing is selected, creates a Merge node in difference mode.
 ### Render
 - **AfanasyButtons.py**: Adds Set Free and Eject and NIMBY buttons to Nuke
 - **screenshotFromViewer.py**: Renders the current frame of the active viewer and saves it to the current script's folder in the 'screenshots' subfolder or in the NUKE_TEMP_DIR folder
+
+- **autolabel.py**: Nuke labels customization script
 

@@ -66,6 +66,9 @@ if '## Script Descriptions' in readme:
     readme = readme.split('## Script Descriptions')[0].rstrip()
 
 with open(README_FILE, 'w', encoding='utf-8') as f:
+    autolabel_info = '- **autolabel.py**: Nuke labels customization script'
+    if 'autolabel.py' not in scripts_info:
+        new_section += '\n' + autolabel_info + '\n'
     f.write(readme + '\n\n' + new_section + '\n')
 
 print('README.md updated with script descriptions.')
