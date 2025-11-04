@@ -6,6 +6,7 @@ for root, dirs, _ in os.walk(os.path.dirname(__file__)):
     nuke.pluginAddPath(root.replace('\\', '/'))
 
 nuke.menu('Animation').addCommand('Set Animation Speed','import AnimationSpeed; AnimationSpeed.SetAnimationSpeed()')
+nuke.menu('Properties').addCommand('Bake all animation', 'import BakeAnimation; BakeAnimation.bake()')
 nuke.menu('Animation').addCommand('copy knob name/copy knob name', 'import copyKnobName; copyKnobName.copyKnobName()')
 nuke.menu('Animation').addCommand('copy knob name/copy full knob name', 'import copyKnobName; copyKnobName.copyFullKnobName()')
 nuke.menu('Animation').addCommand('label this', 'import labelThisKnob; labelThisKnob.labelThis()')

@@ -113,6 +113,7 @@ If nothing is selected, creates a Merge node in difference mode.
 
 ### AnimationMenu
 - **AnimationSpeed.py**: Adds knobs and sets an expression on the selected knob to control the speed of its value change
+- **BakeAnimation.py**: Bakes animation on all knobs with expressions
 - **copyKnobName.py**: Copy knob name or knob name with node name for selected knob in animation menu
 - **labelThisKnob.py**: Adds information about the selected knob's value to the label
 
