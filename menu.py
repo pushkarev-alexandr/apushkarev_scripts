@@ -85,6 +85,7 @@ from openNkAsNewComp import openNkAsNewComp
 nukescripts.addDropDataCallback(openNkAsNewComp)
 from updateLocalization import updateLocalizationMain
 nuke.addAfterRender(updateLocalizationMain)
+import autosaveToFolder
 import CustomGuides
 nuke.menu('Nuke').addCommand('File/Open Copy...', 'import openCopy; openCopy.openCopy()', 'Ctrl+Alt+O', index=2)
 import FooocusViewer

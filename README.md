@@ -128,6 +128,7 @@ If nothing is selected, creates a Merge node in difference mode.
 
 ### Custom
 - **CustomGuides.py**: Adds rule of thirds and symmetry guides to the viewer. Also adds a new matte format 2.387 for 2048x858.
+- **autosaveToFolder.py**: Sets Nuke's autosave to the 'autosaves' folder next to the script
 
 ### File
 - **openCopy.py**: Copies the selected script to the temp folder and opens it so as not to modify the user's script
