@@ -123,6 +123,8 @@ If nothing is selected, creates a Merge node in difference mode.
 - **open_remove_localization.py**: Adds extra buttons to the Cache/Localization menu for opening the localization folder and removing this folder
 
 ### CallbackScripts
+- **colorspaceAutobaking.py**: When saving the script, all colorspaces in Reads and Writes are baked
+- **colorspaceTclKnob.py**: Adds a knob to the Write node that remaps colorspace values, and this knob can be used as a variable for colorspace via [value csp]
 - **favoritesDirectories.py**: When opening a script in the favorites chooser, a folder named 'nk' is added, which points to the folder where the currently opened script is stored
 - **openNkAsNewComp.py**: If you drop a .nk file into Nuke, it will open as a new project instead of copying its contents
 - **updateLocalization.py**: When rendering finishes, the script finds the Read node that corresponds to the Write node used for rendering and updates localization

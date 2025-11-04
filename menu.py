@@ -81,6 +81,8 @@ nuke.menu('Nuke').addCommand('APushkarev/Viewer/Jump Left', 'import viewerJumper
 nuke.menu('Nuke').addCommand('Cache/Localization/Localize Folder', 'import localizeFolder; localizeFolder.main()')
 nuke.menu('Nuke').addCommand('Cache/Localization/Open Localization Folder', 'import open_remove_localization;open_remove_localization.open_localization_folder()')
 nuke.menu('Nuke').addCommand('Cache/Localization/Remove Localization Folder', 'import open_remove_localization;open_remove_localization.remove_localization_folder()')
+import colorspaceAutobaking
+import colorspaceTclKnob
 import favoritesDirectories
 from openNkAsNewComp import openNkAsNewComp
 nukescripts.addDropDataCallback(openNkAsNewComp)
