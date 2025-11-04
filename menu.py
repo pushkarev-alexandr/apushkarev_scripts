@@ -5,6 +5,10 @@ for root, dirs, _ in os.walk(os.path.dirname(__file__)):
     dirs[:] = [d for d in dirs if d not in ('__pycache__', '.git')]
     nuke.pluginAddPath(root.replace('\\', '/'))
 
+nuke.menu('Animation').addCommand('Set Animation Speed','import AnimationSpeed; AnimationSpeed.SetAnimationSpeed()')
+nuke.menu('Animation').addCommand('copy knob name/copy knob name', 'import copyKnobName; copyKnobName.copyKnobName()')
+nuke.menu('Animation').addCommand('copy knob name/copy full knob name', 'import copyKnobName; copyKnobName.copyFullKnobName()')
+nuke.menu('Animation').addCommand('label this', 'import labelThisKnob; labelThisKnob.labelThis()')
 nuke.menu('Nuke').addCommand('APushkarev/Bridge/Send to After Effects', 'import sendToAfterEffects; sendToAfterEffects.sendToAfterEffects()', icon='after-effects.png')
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Add N P Layers', 'import addNPLayers; addNPLayers.addNPLayers()')
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Check Channels', 'import checkChannels; checkChannels.checkChannels()')

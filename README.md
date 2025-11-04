@@ -111,6 +111,11 @@ If nothing is selected, creates a Merge node in difference mode.
 - **toggleMaskingMode.py**: Toggles masking mode
 - **viewerJumper.py**: Can jump between adjacent Read nodes
 
+### AnimationMenu
+- **AnimationSpeed.py**: Adds knobs and sets an expression on the selected knob to control the speed of its value change
+- **copyKnobName.py**: Copy knob name or knob name with node name for selected knob in animation menu
+- **labelThisKnob.py**: Adds information about the selected knob's value to the label
+
 ### Cache
 #### Localization
 - **localizeFolder.py**: Allows you to localize a folder and all its contents
