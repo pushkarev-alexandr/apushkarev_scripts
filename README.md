@@ -21,6 +21,7 @@
 #### Channels
 - **addNPLayers.py**: Adds N and P layers which are not present in Nuke by default but are very useful
 - **checkChannels.py**: Select two nodes; the script checks if the channels in these two nodes match. Useful for comparing if channels are missing or new ones have appeared in a new render
+- **createShuffleNode.py**: Creates a Shuffle2 node and immediately merges rgb into the P or N channel if the Read node's filename contains _P_ or _N_
 
 #### Colorspace
 - **setColorspace.py**: Hotkeys for colorspaces
@@ -92,6 +93,8 @@ If nothing is selected, creates a Merge node in difference mode.
 - **CardReconcile.py**: Creates a CornerPin from a Card node
 - **corenerpinLabel.py**: When pressing the copy_from or copy_to button, removes the matchmove or stabilize label (this label is set by the matchmove/stabilize button in the hotbox)
 - **cornerPinToTracker.py**: Converts all animated knobs to Tracker node trackers
+- **createLinkedRoto.py**: Select the Tracker node, press O or P and a linked Roto or RotoPaint will be created
+- **createReformat.py**: Sets the required resize to width or height. Sets shortcut. Adds a button to create a Reformat node with the format of the selected Read node.
 - **distortTracker.py**: Distorts the position of Tracker node points using a distortion equalizer node
 - **mergeTrackers.py**: Merges several selected Tracker nodes into one node
 - **transformCornerPin.py**: Transforms CornerPin points as specified in the selected Transform node

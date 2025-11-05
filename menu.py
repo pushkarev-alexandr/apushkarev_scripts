@@ -13,6 +13,7 @@ nuke.menu('Animation').addCommand('label this', 'import labelThisKnob; labelThis
 nuke.menu('Nuke').addCommand('APushkarev/Bridge/Send to After Effects', 'import sendToAfterEffects; sendToAfterEffects.sendToAfterEffects()', icon='after-effects.png')
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Add N P Layers', 'import addNPLayers; addNPLayers.addNPLayers()')
 nuke.menu('Nuke').addCommand('APushkarev/Channels/Check Channels', 'import checkChannels; checkChannels.checkChannels()')
+nuke.menu('Nodes').addCommand('Channel/Shuffle', 'import createShuffleNode; createShuffleNode.createShuffleNode()', 'shift+j', icon='Shuffle.png', shortcutContext=2)
 import setColorspace
 setColorspace.addColorspaceMenu(nuke.menu('Nuke').menu('APushkarev'))
 nuke.menu('Nuke').addCommand('APushkarev/Create/Link Blur to Erode', 'import createBlur; createBlur.main()', 'Ctrl+B', shortcutContext=2)
@@ -63,6 +64,11 @@ nuke.menu('Nuke').addCommand('APushkarev/Roto/Move Lifetime', 'import moveRotoLi
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Card Reconcile', 'import CardReconcile; CardReconcile.main()')
 import corenerpinLabel
 nuke.menu('Nuke').addCommand('APushkarev/Transform/CornerPin to Tracker', 'import cornerPinToTracker; cornerPinToTracker.cornerPinToTracker()')
+menu = nuke.menu('Nodes').menu('Draw')
+for rotoname in ['Roto', 'RotoPaint']:
+    menu.findItem(rotoname).setScript(f'import createLinkedRoto; createLinkedRoto.createLinkedRoto("{rotoname}")')
+nuke.menu('Nodes').addCommand('Transform/Reformat', 'import createReformat; createReformat.createReformat()', 'Ctrl+R', icon='Reformat.png')
+nuke.menu('Nodes').addCommand('Transform/Reformat from selected', 'import createReformat; createReformat.formatFromSelected()', 'Ctrl+Alt+R', icon='Reformat.png', index=17)
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Distort Tracker', 'import distortTracker; distortTracker.distortTracker()')
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Merge Trackers Nodes', 'import mergeTrackers; mergeTrackers.mergeTrackers()')
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Transform CornerPin', 'import transformCornerPin; transformCornerPin.transformCornerPin()')

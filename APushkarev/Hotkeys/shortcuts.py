@@ -34,7 +34,6 @@ def createShortcutsMenu(menu: nuke.Menu):
         "ChannelMerge|alt+l",
         "Keymix|alt+j",
         "Dissolve|alt+shift+j",
-        "Shuffle2|shift+j",
         "ShuffleCopy|shift+k",
         "Invert|shift+i",
         "Defocus|alt+a",
