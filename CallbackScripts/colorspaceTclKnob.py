@@ -1,6 +1,6 @@
 # Adds a knob to the Write node that remaps colorspace values, and this knob can be used as a variable for colorspace via [value csp]
 
-# v1.0.0
+# v1.0.1
 # created by: Pushkarev Aleksandr
 
 import nuke
@@ -15,8 +15,8 @@ def manageCspTclKnob():
     node = nuke.thisNode()
     if node.knob(old_kn_name):  # If there is a knob with the old name, remove it
         node.removeKnob(node.knob(old_kn_name))
-        file = node['file'].value()
-        new_file = file.replace('[value {}]'.format(old_kn_name), '[value {}]'.format(kn_name))
+    file = node['file'].value()
+    new_file = file.replace(f'[value {old_kn_name}]', f'[value {kn_name}]')  # Replace old knob name with new one
     node['file'].setValue(new_file)  # Change the expression in the file so the user doesn't notice anything
     knobs = node.writeKnobs(nuke.TO_SCRIPT | nuke.WRITE_NON_DEFAULT_ONLY).split('\n')
     if not node.knob(kn_name):  # If it doesn't exist, create it
