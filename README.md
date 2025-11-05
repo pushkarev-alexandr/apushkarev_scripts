@@ -57,6 +57,7 @@
 - **addLabel.py**: Adds a label to selected nodes; if an empty string is specified, removes the existing label
 - **bakeDotsColor.py**: Bakes the label color of the selected dot (or all if none are selected) into HTML code. After this, the label color does not change when zooming in or out. Created for the Mira project where colored labels on dots were needed but remained black and white
 - **batchKnobEdit.py**: Allows you to change the value of a specified parameter or set an expression for multiple selected nodes
+- **customFrameHold.py**: Adds a shortcut 'h' for creating FrameHold. If only FrameHold nodes are selected, the current frame will be set in those nodes
 - **restoreNodeName.py**: Sets the node name based on its class name; for Roto nodes, sets output to alpha
 - **showClassName.py**: Displays a message with the class names of selected nodes
 
