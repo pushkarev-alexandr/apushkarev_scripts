@@ -38,6 +38,7 @@ nuke.menu('Nuke').addCommand('APushkarev/Node/Add Label', 'import addLabel; addL
 nuke.menu('Nuke').addCommand('APushkarev/Node/Bake Dots Color', 'import bakeDotsColor; bakeDotsColor.bakeDotsColor()')
 nuke.menu('Nuke').addCommand('APushkarev/Node/Batch Knob Edit', 'import batchKnobEdit; batchKnobEdit.batchKnobEdit()')
 nuke.menu('Nodes').addCommand('Time/FrameHold', 'import customFrameHold; customFrameHold.customFrameHold()', 'h', icon='FrameHold.png', shortcutContext=2)
+nuke.menu('Nodes').addCommand('Other/Backdrop', 'import customSimpleBackdrop; customSimpleBackdrop.createBackdrop()', 'Alt+B', icon='Backdrop.png', shortcutContext=2)
 nuke.menu('Nuke').addCommand('APushkarev/Node/Restore Node Name', 'import restoreNodeName; restoreNodeName.restoreNodeName()')
 nuke.menu('Nuke').addCommand('APushkarev/Node/Show Class Name', 'import showClassName; showClassName.showClassName()', 'Ctrl+Alt+Shift+I')
 nuke.menu('Nuke').addCommand('APushkarev/Node Graph/Dotify', 'import dotify; dotify.main()')
