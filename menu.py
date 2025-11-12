@@ -92,6 +92,7 @@ nuke.menu('Nuke').addCommand('Cache/Localization/Remove Localization Folder', 'i
 import colorspaceAutobaking
 import colorspaceTclKnob
 import disconnectViewersOnLoad
+import dropCameraAxisFBX
 import favoritesDirectories
 from openNkAsNewComp import openNkAsNewComp
 nukescripts.addDropDataCallback(openNkAsNewComp)
