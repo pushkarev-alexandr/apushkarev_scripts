@@ -101,6 +101,7 @@ nuke.addAfterRender(updateLocalizationMain)
 import autosaveToFolder
 import CustomGuides
 nuke.menu('Nuke').addCommand('Edit/Copy With Links', 'import copyWithLinks; copyWithLinks.copyWithLinks()', index=16)
+import FavoriteScripts
 nuke.menu('Nuke').addCommand('File/Open Copy...', 'import openCopy; openCopy.openCopy()', 'Ctrl+Alt+O', index=2)
 import FooocusViewer
 nukescripts.registerWidgetAsPanel('FooocusViewer.ImageGallery', 'Fooocus Viewer', 'uk.co.thefoundry.FooocusViewer')
