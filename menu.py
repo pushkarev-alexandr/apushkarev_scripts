@@ -94,6 +94,7 @@ import colorspaceTclKnob
 import disconnectViewersOnLoad
 import dropCameraAxisFBX
 import favoritesDirectories
+import gizmoDropper
 from openNkAsNewComp import openNkAsNewComp
 nukescripts.addDropDataCallback(openNkAsNewComp)
 from updateLocalization import updateLocalizationMain
