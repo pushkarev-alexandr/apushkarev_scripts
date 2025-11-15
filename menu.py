@@ -107,4 +107,5 @@ import FooocusViewer
 nukescripts.registerWidgetAsPanel('FooocusViewer.ImageGallery', 'Fooocus Viewer', 'uk.co.thefoundry.FooocusViewer')
 nuke.menu('Nuke').addCommand('Render/Afanasy/Set Free', 'import AfanasyButtons; AfanasyButtons.setFree()', icon='free.png')
 nuke.menu('Nuke').addCommand('Render/Afanasy/Eject and NIMBY', 'import AfanasyButtons; AfanasyButtons.ejectAndNIMBY()', icon='stop.png')
+nuke.menu('Nuke').addCommand('Render/Gif Render', 'import gif_render; gif_render.gif_render()')
 nuke.menu('Nuke').addCommand('Render/Screenshot', 'import screenshotFromViewer; screenshotFromViewer.screenshotFromViewer()', 'F3')
