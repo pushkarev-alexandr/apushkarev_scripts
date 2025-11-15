@@ -95,6 +95,7 @@ import disconnectViewersOnLoad
 import dropCameraAxisFBX
 import favoritesDirectories
 import gizmoDropper
+import ignoreTypesOnDrop
 from openNkAsNewComp import openNkAsNewComp
 nukescripts.addDropDataCallback(openNkAsNewComp)
 from updateLocalization import updateLocalizationMain
