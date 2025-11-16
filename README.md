@@ -145,6 +145,9 @@ If nothing is selected, creates a Merge node in difference mode.
 ### Edit
 - **copyWithLinks.py**: Copies the node and links all knobs to the copied node
 
+#### Node
+- **invertDisable.py**: Inverts the disable state of selected nodes
+
 ### File
 - **FavoriteScripts.py**: Adds an interface for favorite scripts that can be opened via shortcut or from a list
 - **openCopy.py**: Copies the selected script to the temp folder and opens it so as not to modify the user's script

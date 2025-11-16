@@ -103,6 +103,7 @@ nuke.addAfterRender(updateLocalizationMain)
 import autosaveToFolder
 import CustomGuides
 nuke.menu('Nuke').addCommand('Edit/Copy With Links', 'import copyWithLinks; copyWithLinks.copyWithLinks()', index=16)
+nuke.menu('Nuke').addCommand('Edit/Node/Invert Disable', 'import invertDisable; invertDisable.invertDisable()', 'Alt+D', index=14)
 import FavoriteScripts
 nuke.menu('Nuke').addCommand('File/Open Copy...', 'import openCopy; openCopy.openCopy()', 'Ctrl+Alt+O', index=2)
 import FooocusViewer
