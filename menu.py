@@ -98,6 +98,7 @@ import favoritesDirectories
 import gizmoDropper
 import ignoreTypesOnDrop
 import monitorOutKnobChanged
+import nameUntitledFormats
 from openNkAsNewComp import openNkAsNewComp
 nukescripts.addDropDataCallback(openNkAsNewComp)
 from updateLocalization import updateLocalizationMain
