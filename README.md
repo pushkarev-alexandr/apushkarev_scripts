@@ -155,6 +155,7 @@ If nothing is selected, creates a Merge node in difference mode.
 
 #### Node
 - **invertDisable.py**: Inverts the disable state of selected nodes
+- **postageStampOnOff.py**: Same as the standard Postage Stamp On/Off, but if no nodes are selected, it toggles the postage stamp for all Read nodes
 
 ### File
 - **FavoriteScripts.py**: Adds an interface for favorite scripts that can be opened via shortcut or from a list
