@@ -72,6 +72,7 @@ for rotoname in ['Roto', 'RotoPaint']:
 nuke.menu('Nodes').addCommand('Transform/Reformat', 'import createReformat; createReformat.createReformat()', 'Ctrl+R', icon='Reformat.png')
 nuke.menu('Nodes').addCommand('Transform/Reformat from selected', 'import createReformat; createReformat.formatFromSelected()', 'Ctrl+Alt+R', icon='Reformat.png', index=17)
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Distort Tracker', 'import distortTracker; distortTracker.distortTracker()')
+import matchmoveRotoFromCornerPin
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Merge Trackers Nodes', 'import mergeTrackers; mergeTrackers.mergeTrackers()')
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Transform CornerPin', 'import transformCornerPin; transformCornerPin.transformCornerPin()')
 nuke.menu('Nuke').addCommand('APushkarev/Transform/Transform Tracker', 'import transformTracker; transformTracker.transformTracker()')

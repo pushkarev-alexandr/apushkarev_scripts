@@ -98,6 +98,7 @@ If nothing is selected, creates a Merge node in difference mode.
 - **createLinkedRoto.py**: Select the Tracker node, press O or P and a linked Roto or RotoPaint will be created
 - **createReformat.py**: Sets the required resize to width or height. Sets shortcut. Adds a button to create a Reformat node with the format of the selected Read node.
 - **distortTracker.py**: Distorts the position of Tracker node points using a distortion equalizer node
+- **matchmoveRotoFromCornerPin.py**: If the Roto or RotoPaint node was created with a selected CornerPin, matchmove the root layer of the created Roto or RotoPaint node
 - **mergeTrackers.py**: Merges several selected Tracker nodes into one node
 - **transformCornerPin.py**: Transforms CornerPin points as specified in the selected Transform node
 - **transformTracker.py**: Transforms Tracker points as specified in the selected Transform node
