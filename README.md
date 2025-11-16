@@ -142,6 +142,10 @@ If nothing is selected, creates a Merge node in difference mode.
 - **CustomGuides.py**: Adds rule of thirds and symmetry guides to the viewer. Also adds a new matte format 2.387 for 2048x858.
 - **autosaveToFolder.py**: Sets Nuke's autosave to the 'autosaves' folder next to the script
 
+### CustomNodes
+- **BlockyNode.py**: Returns the Blocky filter which is available in Nuke but hidden by default
+- **KeepNode.py**: In addition to the Remove node, adds a Keep node that creates a Remove node with the "keep" operation and "rgba" channels
+
 ### Edit
 - **copyWithLinks.py**: Copies the node and links all knobs to the copied node
 

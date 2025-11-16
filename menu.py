@@ -102,6 +102,8 @@ from updateLocalization import updateLocalizationMain
 nuke.addAfterRender(updateLocalizationMain)
 import autosaveToFolder
 import CustomGuides
+import BlockyNode
+import KeepNode
 nuke.menu('Nuke').addCommand('Edit/Copy With Links', 'import copyWithLinks; copyWithLinks.copyWithLinks()', index=16)
 nuke.menu('Nuke').addCommand('Edit/Node/Invert Disable', 'import invertDisable; invertDisable.invertDisable()', 'Alt+D', index=14)
 import FavoriteScripts
