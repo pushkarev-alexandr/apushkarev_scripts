@@ -12,7 +12,9 @@ README_FILE = os.path.join(os.path.dirname(__file__), "README.md")
 # Scan all .py files in subfolders
 def find_scripts(root_dir):
     scripts_by_folder = defaultdict(list)
-    for folder, _, files in os.walk(root_dir):
+    for folder, dirs, files in os.walk(root_dir):
+        if '.git' in dirs:
+            dirs.remove('.git')
         rel_folder = os.path.relpath(folder, root_dir).replace('\\', '/')
         if rel_folder == '.':
             continue  # skip the root folder
@@ -45,7 +47,8 @@ for rel_folder, scripts in scripts_by_folder.items():
 
 for top in sorted(grouped):
     lines.append(f'### {top}')
-    for sub in sorted(grouped[top]):
+    # sort subfolders, treating None as an empty string to avoid TypeError
+    for sub in sorted(grouped[top], key=lambda x: x or ''):
         if sub:
             lines.append(f'#### {sub}')
         for script in sorted(grouped[top][sub]):
