@@ -99,6 +99,7 @@ import gizmoDropper
 import ignoreTypesOnDrop
 import monitorOutKnobChanged
 import nameUntitledFormats
+import nukeColorspaceGammaError
 from openNkAsNewComp import openNkAsNewComp
 nukescripts.addDropDataCallback(openNkAsNewComp)
 from updateLocalization import updateLocalizationMain

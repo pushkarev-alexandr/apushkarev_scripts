@@ -138,6 +138,7 @@ If nothing is selected, creates a Merge node in difference mode.
 - **ignoreTypesOnDrop.py**: Prevents loading files of certain formats via drag-and-drop when dropping a folder
 - **monitorOutKnobChanged.py**: Ensures that monitorOut always has the same colorspace as the viewer
 - **nameUntitledFormats.py**: When creating a Read node, checks all formats and assigns a name to untitled formats
+- **nukeColorspaceGammaError.py**: Fixes the error when importing mov or mp4 into Nuke and Nuke reports it cannot find the colorspace Gamma2.2 or sRGB
 - **openNkAsNewComp.py**: If you drop a .nk file into Nuke, it will open as a new project instead of copying its contents
 - **updateLocalization.py**: When rendering finishes, the script finds the Read node that corresponds to the Write node used for rendering and updates localization
 
