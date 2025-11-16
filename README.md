@@ -136,6 +136,7 @@ If nothing is selected, creates a Merge node in difference mode.
 - **favoritesDirectories.py**: When opening a script in the favorites chooser, a folder named 'nk' is added, which points to the folder where the currently opened script is stored
 - **gizmoDropper.py**: Allows you to drag and drop gizmos into Nuke
 - **ignoreTypesOnDrop.py**: Prevents loading files of certain formats via drag-and-drop when dropping a folder
+- **monitorOutKnobChanged.py**: Ensures that monitorOut always has the same colorspace as the viewer
 - **openNkAsNewComp.py**: If you drop a .nk file into Nuke, it will open as a new project instead of copying its contents
 - **updateLocalization.py**: When rendering finishes, the script finds the Read node that corresponds to the Write node used for rendering and updates localization
 
