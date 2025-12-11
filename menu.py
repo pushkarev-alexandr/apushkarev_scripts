@@ -104,7 +104,6 @@ from openNkAsNewComp import openNkAsNewComp
 nukescripts.addDropDataCallback(openNkAsNewComp)
 from updateLocalization import updateLocalizationMain
 nuke.addAfterRender(updateLocalizationMain)
-import autosaveToFolder
 import CustomGuides
 import BlockyNode
 import KeepNode
