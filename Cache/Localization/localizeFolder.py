@@ -1,7 +1,11 @@
 # Allows you to localize a folder and all its contents
 
-# v1.0.0
+# v1.0.1
 # created by: Pushkarev Aleksandr
+
+# Changelog:
+# v1.0.0 - initial release
+# v1.0.1 - auto-detect folder from selected Read node
 
 import nuke
 import threading, os, shutil
@@ -53,7 +57,16 @@ def main():
     if not localPath:
         nuke.message('Cannot determine localization folder')
         return
-    folder = nuke.getFilename('Choose folder to copy')
+    
+    # Try to get folder from selected Read node
+    defaultFolder = ''
+    for read in nuke.selectedNodes('Read'):
+        folder = os.path.dirname(read['file'].getEvaluatedValue())
+        if os.path.isdir(folder):
+            defaultFolder = folder.replace('\\','/') + '/'
+            break
+    
+    folder = nuke.getFilename('Choose folder to copy', default = defaultFolder)
     if folder==None:
         return
     if not os.path.isdir(folder):
