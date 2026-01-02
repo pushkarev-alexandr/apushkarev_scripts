@@ -157,6 +157,9 @@ If nothing is selected, creates a Merge node in difference mode.
 - **invertDisable.py**: Inverts the disable state of selected nodes
 - **postageStampOnOff.py**: Same as the standard Postage Stamp On/Off, but if no nodes are selected, it toggles the postage stamp for all Read nodes
 
+#### Node/Filename
+- **versionToLatest.py**: Replaces the standard Nuke "Version To Latest" behavior. The default script stops at the first missing version (e.g., with v6 and v8 present but no v7, a v2 read would only jump to v6); this script continues to the highest available version (v8 in that example).
+
 ### File
 - **FavoriteScripts.py**: Adds an interface for favorite scripts that can be opened via shortcut or from a list
 - **openCopy.py**: Copies the selected script to the temp folder and opens it so as not to modify the user's script
