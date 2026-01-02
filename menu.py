@@ -108,6 +108,7 @@ import CustomGuides
 import BlockyNode
 import KeepNode
 nuke.menu('Nuke').addCommand('Edit/Copy With Links', 'import copyWithLinks; copyWithLinks.copyWithLinks()', index=16)
+nuke.menu('Nuke').addCommand('Edit/Remove Input', 'import removeInput; removeInput.removeInput()', 'Ctrl+D')
 nuke.menu('Nuke').addCommand('Edit/Node/Invert Disable', 'import invertDisable; invertDisable.invertDisable()', 'Alt+D', index=14)
 nuke.menu('Nuke').addCommand('Edit/Node/Postage Stamp On\/Off', 'import postageStampOnOff; postageStampOnOff.postageStampOnOff()', 'Alt+P', index=8, shortcutContext=2)
 import FavoriteScripts
@@ -117,4 +118,9 @@ nukescripts.registerWidgetAsPanel('FooocusViewer.ImageGallery', 'Fooocus Viewer'
 nuke.menu('Nuke').addCommand('Render/Afanasy/Set Free', 'import AfanasyButtons; AfanasyButtons.setFree()', icon='free.png')
 nuke.menu('Nuke').addCommand('Render/Afanasy/Eject and NIMBY', 'import AfanasyButtons; AfanasyButtons.ejectAndNIMBY()', icon='stop.png')
 nuke.menu('Nuke').addCommand('Render/Gif Render', 'import gif_render; gif_render.gif_render()')
+nuke.menu('Nuke').addCommand('Render/Render CMD', 'import renderCMD; renderCMD.renderCMD()', 'F6')
+nuke.menu('Nuke').addCommand('Render/Render Range/Global', 'import renderRange; renderRange.renderGlobalRange()', 'F5')
+nuke.menu('Nuke').addCommand('Render/Render Range/Input', 'import renderRange; renderRange.renderInputRange()', 'Ctrl+Shift+F5')
+nuke.menu('Nuke').addCommand('Render/Render Range/In\/Out', 'import renderRange; renderRange.renderInOutRange()', 'Ctrl+Alt+Shift+F5')
+nuke.menu('Nuke').addCommand('Render/Render Range/Current Frame', 'import renderRange; renderRange.renderCurrentFrame()', 'Ctrl+Alt+F5')
 nuke.menu('Nuke').addCommand('Render/Screenshot', 'import screenshotFromViewer; screenshotFromViewer.screenshotFromViewer()', 'F3')

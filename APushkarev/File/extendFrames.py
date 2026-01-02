@@ -1,7 +1,9 @@
 # Extend frames for Read node
 
-#v1.0.0
-#created by: Pushkarev Aleksandr
+# v1.0.0
+# created by: Pushkarev Aleksandr
+
+# TODO check how it works on not complete sequences
 
 import nuke, os
 

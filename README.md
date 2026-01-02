@@ -151,6 +151,7 @@ If nothing is selected, creates a Merge node in difference mode.
 
 ### Edit
 - **copyWithLinks.py**: Copies the node and links all knobs to the copied node
+- **removeInput.py**: Extends the standard Edit/Remove Input command: if no node is selected, disconnects inputs from all viewers
 
 #### Node
 - **invertDisable.py**: Inverts the disable state of selected nodes
@@ -166,6 +167,8 @@ If nothing is selected, creates a Merge node in difference mode.
 ### Render
 - **AfanasyButtons.py**: Adds Set Free and Eject and NIMBY buttons to Nuke
 - **gif_render.py**: Renders a GIF from the selected node to a 'gif' folder next to the script using ffmpeg
+- **renderCMD.py**: Renders selected Write nodes over the global range via command line
+- **renderRange.py**: Renders selected nodes over the global range, launches afanasy node over afanasy node's range, presses updateLocalization button on selected Read node
 - **screenshotFromViewer.py**: Renders the current frame of the active viewer and saves it to the current script's folder in the 'screenshots' subfolder or in the NUKE_TEMP_DIR folder
 
 - **autolabel.py**: Nuke labels customization script
