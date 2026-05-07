@@ -114,6 +114,7 @@ nuke.menu('Nuke').addCommand('Edit/Node/Postage Stamp On\/Off', 'import postageS
 nuke.menu('Nuke').addCommand('Edit/Node/Filename/Version to Latest', 'import versionToLatest; versionToLatest.versionToLatest()', 'Alt+Shift+Up')
 import FavoriteScripts
 nuke.menu('Nuke').addCommand('File/Open Copy...', 'import openCopy; openCopy.openCopy()', 'Ctrl+Alt+O', index=2)
+nuke.menu('Nuke').addCommand('File/Open Recent Project', 'import openRecentProject; openRecentProject.openRecentProject()', 'Alt+Shift+O', index=2)
 import FooocusViewer
 nukescripts.registerWidgetAsPanel('FooocusViewer.ImageGallery', 'Fooocus Viewer', 'uk.co.thefoundry.FooocusViewer')
 nuke.menu('Nuke').addCommand('Render/Afanasy/Set Free', 'import AfanasyButtons; AfanasyButtons.setFree()', icon='free.png')

@@ -163,6 +163,7 @@ If nothing is selected, creates a Merge node in difference mode.
 ### File
 - **FavoriteScripts.py**: Adds an interface for favorite scripts that can be opened via shortcut or from a list
 - **openCopy.py**: Copies the selected script to the temp folder and opens it so as not to modify the user's script
+- **openRecentProject.py**: Shows the recent projects in a list and allows to open them by clicking on the item or using the number shortcut
 
 ### NukePanels
 - **FooocusViewer.py**: Panel for Fooocus, displays images generated via Fooocus
