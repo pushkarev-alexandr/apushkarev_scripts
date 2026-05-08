@@ -1,16 +1,33 @@
 # Creates a Read node from a Write node
 
-# v1.2.5
+# v1.2.6
 # created by: Pushkarev Aleksandr
 
+# Changelog:
 # v1.2.4 - made it work not only for padding 4 (%04d)
 # v1.2.5 - added .mp4 in addition to .mov. Renamed to createReadFromWrite
+# v1.2.6 - localizationPolicy and updateLocalization now run only when source drive differs from localization cache drive
 
 # TODO:
 # make it work with WriteGeo
 
 import nuke
 import os, re
+
+def getDriveLetter(path):
+    # Returns normalized drive letter for Windows paths (e.g. "Z"), else empty string
+    drive = os.path.splitdrive(path)[0]
+    if drive:
+        return drive.rstrip(':').upper()
+    return ''
+
+def shouldUpdateLocalization(readPath, localCachePath):
+    # Skip localization when source path and local cache are on the same drive
+    readDrive = getDriveLetter(readPath)
+    cacheDrive = getDriveLetter(localCachePath)
+    if readDrive and cacheDrive and readDrive == cacheDrive:
+        return False
+    return True
 
 def isSingleFile(iFileName, basename):
     # Checks if the file is a single file (not a sequence)
@@ -41,6 +58,7 @@ def createReadFromWrite():
     nodes = nuke.selectedNodes()
     if not nodes:
         return
+    localCachePath = nuke.toNode("preferences")["localCachePath"].getEvaluatedValue()
     for node in nodes:
         if node.Class() != 'Write':
             continue
@@ -56,8 +74,9 @@ def createReadFromWrite():
                     read.knob('raw').setValue(True)
                 else:
                     read.knob('colorspace').setValue(node.knob('colorspace').value())
-                read.knob('localizationPolicy').setValue(0)
-                read.knob('updateLocalization').execute()
+                if shouldUpdateLocalization(path, localCachePath):
+                    read.knob('localizationPolicy').setValue(0)
+                    read.knob('updateLocalization').execute()
                 read.setXYpos(node.xpos() + 150, node.ypos())
                 read.setSelected(False)
                 if nuke.root().firstFrame() != 1:
@@ -83,6 +102,7 @@ def createReadFromWrite():
                             read.knob('raw').setValue(True)
                         else:
                             read.knob('colorspace').setValue(node.knob('colorspace').value())
-                        read.knob('localizationPolicy').setValue(0)
-                        read.knob('updateLocalization').execute()
+                        if shouldUpdateLocalization(path, localCachePath):
+                            read.knob('localizationPolicy').setValue(0)
+                            read.knob('updateLocalization').execute()
                         read.setXYpos(node.xpos() + 150, node.ypos())
