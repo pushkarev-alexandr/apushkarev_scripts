@@ -92,6 +92,7 @@ def _add_read_ocio_display(read_node, display):
 
 
 def _configure_write(write_node, target_cs, display_mode, display):
+    write_node["raw"].setValue(False)
     if display_mode:
         write_node["transformType"].setValue("display")
         write_node["ocioDisplay"].setValue(display)
