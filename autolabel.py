@@ -4,7 +4,7 @@
 # All additions are wrapped in CUSTOM BLOCK tags with numbers. Inline additions are marked with EDITED comments.
 # Installation: place this file in any pluginPath folder and it will work instead of the standard autolabel.
 
-# v2.0.0
+# v2.0.1
 # modified by: Pushkarev Aleksandr
 
 import os
@@ -338,6 +338,8 @@ def autolabel():
       removeLabel(labelKn, ['retime [value output.first]', 'Retime_[value output.first]', 'speed [value speed]'])
     elif _class.startswith('LD_3DE'):
       removeLabel(labelKn, '[value direction]')
+    elif _class == 'OCIODisplay':
+      removeLabel(labelKn, '[value display]')
     if this.knob('filter') and this.knob('filter').values()[2:7]==['Keys', 'Simon', 'Rifman', 'Mitchell', 'Parzen']:  # If there is a filter knob and it is a transform filter
       removeLabel(labelKn, ['[value filter]', 'filter [value filter]', 'filter: [value filter]', 'filter::[value filter]'])
     if this.knob('mix'):
@@ -507,6 +509,10 @@ def autolabel():
       layer = nuke.value("A") + " " + operation + " " + nuke.value("B") + " =\n" + nuke.value("output")
   elif _class.startswith('LD_3DE'):  # direction instead of channels will be displayed
     layer = nuke.value("direction")
+  elif _class == "OCIODisplay":
+    k = this.knob('display')
+    if k:
+      layer = k.value()
   # END OF CUSTOM BLOCK 3
 
   elif _class == "Premult" or _class == "Unpremult":
