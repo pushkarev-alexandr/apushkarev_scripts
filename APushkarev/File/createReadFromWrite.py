@@ -62,8 +62,10 @@ def setColorspace(write, read):
         read["raw"].setValue(True)
         ocio = nuke.createNode("OCIODisplay", inpanel=False)
         ocio.setSelected(False)
+        ocio.autoplace()
         ocio["display"].setValue(write["ocioDisplay"].value())
         ocio["invert"].setValue(True)
+        return ocio
     else:
         read["colorspace"].setValue(write["colorspace"].value())
 
@@ -87,7 +89,7 @@ def createReadFromWrite():
                 if node.knob('raw').value():
                     read.knob('raw').setValue(True)
                 else:
-                    setColorspace(node, read)
+                    ocio = setColorspace(node, read)
                 if shouldUpdateLocalization(path, localCachePath):
                     read.knob('localizationPolicy').setValue(0)
                     read.knob('updateLocalization').execute()
@@ -95,8 +97,9 @@ def createReadFromWrite():
                 read.setSelected(False)
                 if nuke.root().firstFrame() != 1:
                     retime = nuke.createNode('AppendClip', inpanel=False)
-                    retime.setInput(0, read)
-                    retime.setXYpos(read.xpos(), read.ypos() + 96)
+                    retime.setInput(0, ocio or read)
+                    retime.autoplace()
+                    # retime.setXYpos(read.xpos(), read.ypos() + 96)
         else:
             dirName = os.path.dirname(path)
             basename = os.path.basename(path)

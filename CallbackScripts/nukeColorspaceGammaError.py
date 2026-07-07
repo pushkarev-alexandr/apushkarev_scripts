@@ -27,6 +27,8 @@ def nukeColorspaceGammaError():
             node['raw'].setValue(True)
             ocio = nuke.createNode('OCIODisplay', inpanel=False)
             ocio.setSelected(False)
+            ocio.setInput(0, node)
+            ocio.autoplace()
             ocio['display'].setValue('Rec.1886 Rec.709 - Display' if isRec709 else 'sRGB - Display')
             ocio['invert'].setValue(True)
         else:   
