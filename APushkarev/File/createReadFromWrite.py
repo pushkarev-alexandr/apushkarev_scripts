@@ -1,12 +1,13 @@
 # Creates a Read node from a Write node
 
-# v1.2.6
+# v1.2.7
 # created by: Pushkarev Aleksandr
 
 # Changelog:
 # v1.2.4 - made it work not only for padding 4 (%04d)
 # v1.2.5 - added .mp4 in addition to .mov. Renamed to createReadFromWrite
 # v1.2.6 - localizationPolicy and updateLocalization now run only when source drive differs from localization cache drive
+# v1.2.7 - added support for aces1.3 display mode
 
 # TODO:
 # make it work with WriteGeo
@@ -53,6 +54,19 @@ def isSingleFile(iFileName, basename):
                 return True
     return False
 
+def setColorspace(write, read):
+    is_display = False
+    if write.knob("transformType"):
+        is_display = write["transformType"].value() == "display"
+    if is_display:
+        read["raw"].setValue(True)
+        ocio = nuke.createNode("OCIODisplay", inpanel=False)
+        ocio.setSelected(False)
+        ocio["display"].setValue(write["ocioDisplay"].value())
+        ocio["invert"].setValue(True)
+    else:
+        read["colorspace"].setValue(write["colorspace"].value())
+
 def createReadFromWrite():
     # Creates a Read node from the selected Write node(s)
     nodes = nuke.selectedNodes()
@@ -73,7 +87,7 @@ def createReadFromWrite():
                 if node.knob('raw').value():
                     read.knob('raw').setValue(True)
                 else:
-                    read.knob('colorspace').setValue(node.knob('colorspace').value())
+                    setColorspace(node, read)
                 if shouldUpdateLocalization(path, localCachePath):
                     read.knob('localizationPolicy').setValue(0)
                     read.knob('updateLocalization').execute()
@@ -101,7 +115,7 @@ def createReadFromWrite():
                         if node.knob('raw').value():
                             read.knob('raw').setValue(True)
                         else:
-                            read.knob('colorspace').setValue(node.knob('colorspace').value())
+                            setColorspace(node, read)
                         if shouldUpdateLocalization(path, localCachePath):
                             read.knob('localizationPolicy').setValue(0)
                             read.knob('updateLocalization').execute()
