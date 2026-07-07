@@ -1,6 +1,6 @@
 # Renders the current frame of the active viewer and saves it to the current script's folder in the 'screenshots' subfolder or in the NUKE_TEMP_DIR folder
 
-# v1.2.2
+# v1.2.3
 # created by: Pushkarev Aleksandr
 
 # changelog:
@@ -8,23 +8,25 @@
 # v1.2.0 Small refactoring. Removed the limit on the number of screenshots, implemented with while loop. Colorspace is now present in the naming.
 # v1.2.1 Now the screenshot name is derived from the script name
 # v1.2.2 Added frame number to screenshot file name
+# v1.2.3 Added support for aces1.3 display mode
 
 import nuke, nukescripts
 import subprocess, os, re
 
-def setColorspace(node, space1, space2=None):
-    availableCS = nuke.root().knob("int8Lut").values()
-    l = len(availableCS)
-    kn = node.knob("colorspace")
-    for i in range(l):
-        if availableCS[i]==space1 or availableCS[i].split("/").pop()==space1:
-            kn.setValue(space1)
-            node["raw"].setValue(False)
-            break
-        elif availableCS[i]==space2 or availableCS[i].split("/").pop()==space2:
-            kn.setValue(space2)
-            node["raw"].setValue(False)
-            break
+def setColorspace(node, default_space, aces_space, display_space):
+    config = nuke.root()["OCIO_config"].value()
+    display = config.startswith("fn-nuke_")
+
+    node["raw"].setValue(False)
+    if node.knob("transformType"):
+        node["transformType"].setValue("display" if display else "colorspace")
+
+    if config == "nuke-default":
+        node["colorspace"].setValue(default_space)
+    elif config.startswith("fn-nuke_"):
+        node["ocioDisplay"].setValue(display_space)
+    else:
+        node["colorspace"].setValue(aces_space)
 
 def validation(viewerWindow, basedir):
     """Validates the viewer window and base directory."""
@@ -63,7 +65,8 @@ def screenshotFromViewer():
         return
     
     viewer = viewerWindow.node()
-    isRec709 = viewer["viewerProcess"].value() == "Rec.709 (ACES)"
+    vp_value = viewer["viewerProcess"].value()
+    isRec709 = vp_value.count("Rec.709") or vp_value == "rec709"
     node = viewer.input(viewerWindow.activeInput())
     nukescripts.clear_selection_recursive()
 
@@ -78,9 +81,9 @@ def screenshotFromViewer():
     write["file"].setValue(path)
     write["channels"].setValue("rgba")
     if isRec709:
-        setColorspace(write, "rec709", "Output - Rec.709")
+        setColorspace(write, "rec709", "Output - Rec.709", "Rec.1886 Rec.709 - Display")
     else:
-        setColorspace(write, "sRGB", "Output - sRGB")
+        setColorspace(write, "sRGB", "Output - sRGB", "sRGB - Display")
     nuke.execute(write, nuke.frame(), nuke.frame())
     nuke.delete(write)
     subprocess.call(("explorer", "/select,", os.path.normpath(path)))
