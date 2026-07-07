@@ -3,6 +3,9 @@
 #v1.0.2
 #created by: Pushkarev Aleksandr
 
+# changelog:
+# v1.0.2 added support for aces1.3 display mode
+
 import nuke, os, re
 
 #----Read from Write block-----
@@ -32,6 +35,19 @@ def isSameSequence(s1, s2):
 def unifyFrameVar(s):
     return re.sub(r"%\d*d", "%d", re.sub(r"#+", "%d", s))
 
+def setColorspace(write, read):
+    is_display = False
+    if write.knob("transformType"):
+        is_display = write["transformType"].value() == "display"
+    if is_display:
+        read["raw"].setValue(True)
+        ocio = nuke.createNode("OCIODisplay", inpanel=False)
+        ocio.setSelected(False)
+        ocio["display"].setValue(write["ocioDisplay"].value())
+        ocio["invert"].setValue(True)
+    else:
+        read["colorspace"].setValue(write["colorspace"].value())
+
 def readFromWrite(node):
     file = node["file"].value()
     dirName = os.path.dirname(file)
@@ -51,7 +67,7 @@ def readFromWrite(node):
                     if node["raw"].value():
                         read["raw"].setValue(True)
                     else:
-                        read["colorspace"].setValue(node["colorspace"].value())
+                        setColorspace(node, read)
                     read["localizationPolicy"].setValue(0)
                     read["updateLocalization"].execute()
                     return read
