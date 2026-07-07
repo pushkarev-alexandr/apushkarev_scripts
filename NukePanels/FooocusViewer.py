@@ -1,7 +1,11 @@
 # Panel for Fooocus, displays images generated through Fooocus
 
-# v1.0.0
+# v1.0.1
 # created by: Pushkarev Aleksandr
+
+# changelog:
+# v1.0.0 initial version
+# v1.0.1 added support for aces1.3 display mode
 
 import nuke
 if nuke.NUKE_VERSION_MAJOR < 16:
@@ -233,4 +237,15 @@ class ImageGallery(QWidget):
     def create_read(self, file_path):
         read = nuke.createNode("Read", inpanel=False)
         read["file"].fromUserText(file_path)
-        read["colorspace"].setValue("Output - sRGB")
+
+        config = nuke.root()["OCIO_config"].value()
+        if config.startswith("fn-nuke_"):
+            read["raw"].setValue(True)
+            ocio = nuke.createNode("OCIODisplay", inpanel=False)
+            ocio.setSelected(False)
+            ocio["display"].setValue("sRGB - Display")
+            ocio["invert"].setValue(True)
+        elif config == "nuke-default":
+            read["colorspace"].setValue("sRGB")
+        else:
+            read["colorspace"].setValue("Output - sRGB")
