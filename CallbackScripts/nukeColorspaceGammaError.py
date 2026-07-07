@@ -1,7 +1,10 @@
 # Fixes the error when importing mov or mp4 into Nuke and Nuke reports it cannot find the colorspace Gamma2.2 or sRGB
 
-# v1.1.0
+# v1.1.1
 # created by: Pushkarev Aleksandr
+
+# changelog:
+# v1.1.1 added support for aces1.3 display mode
 
 import nuke
 
@@ -16,9 +19,17 @@ def nukeColorspaceGammaError():
     cm = nuke.root()['colorManagement'].value()
     conf = nuke.root()['OCIO_config'].value()
     if (file.endswith('.mp4') or file.endswith('.mov') or file.endswith('.mxf')) and cm=='OCIO' and conf!='nuke-default':
-        if cs in ['default (Gamma2.2)', 'default (rec709)']:
-            node['colorspace'].setValue('Output - Rec.709')
-        elif cs=='default (sRGB)':
-            node['colorspace'].setValue('Output - sRGB')
+        isRec709, isSRGB = cs in ['default (Gamma2.2)', 'default (rec709)'], cs == 'default (sRGB)'
+        if not isRec709 and not isSRGB:
+            return
+
+        if conf.startswith('fn-nuke_'):
+            node['raw'].setValue(True)
+            ocio = nuke.createNode('OCIODisplay', inpanel=False)
+            ocio.setSelected(False)
+            ocio['display'].setValue('Rec.1886 Rec.709 - Display' if isRec709 else 'sRGB - Display')
+            ocio['invert'].setValue(True)
+        else:   
+            node['colorspace'].setValue('Output - Rec.709' if isRec709 else 'Output - sRGB')
 
 nuke.addOnCreate(nukeColorspaceGammaError, nodeClass='Read')
