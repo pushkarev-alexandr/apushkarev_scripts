@@ -28,7 +28,7 @@ COLORSPACES = {
         "spaces": ["Input - RED - REDLog3G10 - REDWideGamutRGB", "Log3G10 REDWideGamutRGB", "REDLog"]
     },
     "ARRI - V3 LogC (EI160) - Wide Gamut": {
-        "spaces": ["Input - ARRI - V3 LogC (EI160) - Wide Gamut", "ARRI LogC3 (EI800)", "AlexaV3LogC"]
+        "spaces": ["Input - ARRI - V3 LogC (EI800) - Wide Gamut", "ARRI LogC3 (EI800)", "AlexaV3LogC"]
     },
 }
 
