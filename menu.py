@@ -97,6 +97,8 @@ import dropCameraAxisFBX
 import favoritesDirectories
 import gizmoDropper
 import ignoreTypesOnDrop
+import local_files_to_nuke
+local_files_to_nuke.install_callbacks()
 import monitorOutKnobChanged
 import nameUntitledFormats
 import nukeColorspaceGammaError

@@ -136,6 +136,7 @@ If nothing is selected, creates a Merge node in difference mode.
 - **favoritesDirectories.py**: When opening a script in the favorites chooser, a folder named 'nk' is added, which points to the folder where the currently opened script is stored
 - **gizmoDropper.py**: Allows you to drag and drop gizmos into Nuke
 - **ignoreTypesOnDrop.py**: Prevents loading files of certain formats via drag-and-drop when dropping a folder
+- **local_files_to_nuke.py**: Copies local Read files and sequences to _local_files near the network script
 - **monitorOutKnobChanged.py**: Ensures that monitorOut always has the same colorspace as the viewer
 - **nameUntitledFormats.py**: When creating a Read node, checks all formats and assigns a name to untitled formats
 - **nukeColorspaceGammaError.py**: Fixes the error when importing mov or mp4 into Nuke and Nuke reports it cannot find the colorspace Gamma2.2 or sRGB
