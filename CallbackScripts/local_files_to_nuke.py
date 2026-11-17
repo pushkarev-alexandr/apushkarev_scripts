@@ -17,7 +17,7 @@ import os
 import re
 import shutil
 import socket
-import tempfile
+import uuid
 import time
 
 import nuke
@@ -130,11 +130,22 @@ def get_destination_root(script_path):
     return ntpath.join(script_directory, IMPORT_FOLDER)
 
 
+def create_import_folder(destination_root):
+    """Create a short unique directory with inherited network permissions."""
+    while True:
+        folder = os.path.join(destination_root, "import_" + uuid.uuid4().hex[:8])
+        try:
+            os.mkdir(folder)
+        except FileExistsError:
+            continue
+        return folder
+
+
 def copy_single_file(source, destination_root):
     """Use a unique folder to avoid overwriting files with the same name."""
     if not os.path.isfile(source):
         raise MissingSourceError("Source file does not exist: {}".format(source))
-    folder = tempfile.mkdtemp(prefix="import_", dir=destination_root)
+    folder = create_import_folder(destination_root)
     destination = os.path.join(folder, ntpath.basename(source))
     shutil.copyfile(source, destination)
     return destination.replace("\\", "/")
@@ -169,7 +180,7 @@ def copy_sequence(source, destination_root, files=None):
     """Copy all matching frames to one folder and retain the original template."""
     if files is None:
         files = find_sequence_files(source)
-    folder = tempfile.mkdtemp(prefix="import_", dir=destination_root)
+    folder = create_import_folder(destination_root)
     for file in files:
         shutil.copyfile(file, os.path.join(folder, ntpath.basename(file)))
     logger.info("Sequence copied: frames=%s source=%r destination=%r", len(files), source, folder)
